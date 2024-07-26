@@ -1,0 +1,35 @@
+.head{
+    background-color: var(--primary-gray);
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .head_box{
+    margin: 5px 40px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+  }
+  .head_box p{
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .head_box .span{
+    font-size: 3.3rem;
+    font-weight: 900;
+  }
+  .head_box .span h1{
+    margin: 0 !important;
+  }
+  .head_box h1{
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 100;
+  }

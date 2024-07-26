@@ -1,0 +1,30 @@
+.btn{
+    color: var(--off-white);
+    border-radius: 5px;
+    font-size: .8rem;
+    font-weight: 500;
+    padding: 5px 15px;
+    margin: 4px;
+    transition: all .2s ease;
+}
+.outlined{
+    border: 1px solid var(--light-gray);
+    background: transparent;
+    transition: all .2s ease;
+}
+.filled{
+    background-color: rgb(253, 253, 179);
+    border: 1px solid beige;
+    color: var(--primary-gray);
+    transition: all .2s ease;
+}
+.filled:hover{
+    background-color: rgb(255, 241, 88);
+    border-color: rgb(255, 241, 88);
+}
+.outlined:hover{
+    background-color: var(--light-gray);
+}
+.btn:hover{
+    transform: translateY(-2px);
+}
