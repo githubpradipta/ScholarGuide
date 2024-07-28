@@ -5,6 +5,7 @@ import Button from '../Button/Button'
 import CollapsLogo from '../../../assets/Logo/CollapsLogo'
 import DownIcon from '../../../assets/Logo/DownIcon'
 import BrandIcon from '../../../assets/Logo/BrandIcon'
+import LoginIcon from '../../../assets/Logo/LoginIcon'
 
 export default function Navbar() {
     const [collaps,setCollaps] = useState('uncollaps')
@@ -26,8 +27,8 @@ export default function Navbar() {
                 <li><Link>Upload</Link></li>
             </ul>
         </div>
-        <div className="right">
-            <Button varient={'outlined'}>Login</Button>
+        <div className="right flex items-center">
+            <Button flex={true} varient={'outlined'}>Login<LoginIcon/></Button>
             <Button varient={'filled'}>Sign up for full access</Button>
         </div>
         </div>
