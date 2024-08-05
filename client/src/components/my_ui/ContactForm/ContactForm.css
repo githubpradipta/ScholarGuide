@@ -1,0 +1,47 @@
+.contactForm{
+    align-self: center;
+}
+
+.contactForm input,
+.contactForm textarea{
+    background: transparent;
+    outline: none;
+    border: 2px solid var(--off-white);
+    color: var(--off-white);
+    padding: 7px 9px;
+    border-radius: 2px;
+    transition: all .2s ease;
+    font-weight: 500;
+    margin: 4px 0px;
+    width: 100%;
+}
+
+.contactForm input::placeholder,
+.contactForm textarea::placeholder{
+    font-size: medium;
+    color: var(--off-white);
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus{
+    color: white;
+    box-shadow: 0px 0px 3px 3px var(--light-yello);
+}
+.contactForm button{
+    background-color: var(--light-yello);
+    width: 100px ;
+    padding: 4px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: var(--primary-gray);
+    font-weight: 700;
+    margin-top: 20px;
+    transition: all .2s ease;
+}
+.contactForm button:hover{
+    background-color: var(--primary-yello);
+    transform: translateY(-10%);
+    
+}

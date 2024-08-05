@@ -1,0 +1,21 @@
+.cardbtn{
+    color: white;
+    background-color: rgba(164, 164, 164, 0.308);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px 8px;
+    font-size: 13px;
+    transition: all .1s ease-out;
+}
+.cardbtn:hover{
+    background-color: rgba(164, 164, 164, 0.674);
+}
+.cardbtn svg{
+    width: 1rem;
+    height: 1rem;
+}
+.cardtext{
+    background-color: rgba(0, 0, 0, 0.315);
+}

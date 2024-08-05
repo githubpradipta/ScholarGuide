@@ -1,0 +1,72 @@
+
+.craden-box{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    background-color: #ffffff84;
+}
+.craden-left{
+    flex: 1;
+}
+.craden-left input{
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+    background-color: #efefef;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+.pass svg:hover{
+    cursor: pointer;
+}
+.craden-right{
+    flex: 1;
+}
+.craden-form p span{
+    color: #ffdd00;
+    font-weight: 600;
+}
+.craden-form p span:hover{
+    cursor: pointer;
+    border-bottom: 1px solid #ffdd00;
+}
+.input-box{
+    background-color: #efefef;
+    padding: 0px 15px;
+    margin: 8px 40px;
+    border-radius: 8px;
+    border: 2px solid #efefef ;
+}
+.input-box:hover,
+.input-box:focus{
+    border: 2px solid var(--primary-yello);
+}
+.login-btn{
+    margin: 13px 0px;
+    padding: 10px 110px;
+    background-color: var(--light-yello);
+    color: var(--primary-gray);
+    border-radius: 5px;
+    transition: all .2s ease;
+}
+.login-btn:hover{
+    background-color: var(--primary-yello);
+}
+.login-btn svg{
+    transition: all .2s ease;
+}
+.login-btn:hover > svg{
+    transform: translatex(50%);
+}
+.craden-right{
+    object-fit: cover;
+}
+/* .craden-right{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 50px;
+} */
+ .forgetPass{
+    color: var(--off-white);
+    transition: all .2s ease;
+    border-bottom: 1px solid transparent;
+}
+.forgetPass:hover{
+    color: #ffdd00;
+    border-bottom: 1px solid #ffdd00;
+ }

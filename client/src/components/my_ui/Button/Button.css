@@ -1,4 +1,4 @@
-.btn{
+.my-btn{
     color: var(--off-white);
     border-radius: 5px;
     font-size: .8rem;
@@ -25,7 +25,7 @@
 .outlined:hover{
     background-color: var(--light-gray);
 }
-.btn:hover{
+.my-btn:hover{
     transform: translateY(-2px);
 }
 .doflex{

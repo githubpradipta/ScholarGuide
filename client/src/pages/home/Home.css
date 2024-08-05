@@ -1,9 +1,11 @@
 .homepage{
   background-color: var(--primary-gray);
-  padding: 20px 25px;
 }
 .homepage h1{
   color: white;
+}
+.homepage p{
+  color: var(--off-white);
 }
 .head{
     margin: 150px 0px;
@@ -14,6 +16,9 @@
   }
   .head span{
     color: var(--primary-yello);
+  }
+  .head p{
+    color: white;
   }
   .head_box{
     margin: 5px 40px;
@@ -38,9 +43,12 @@
   .notetypes p{
     color: var(--off-white);
   }
-  .typeBox{
-    background-color: rgba(255, 255, 206, 0.447);
+  .blurBG{
+    background-color: rgba(255, 255, 206, 0.164);
     border-radius: 30px;
+  }
+  .grayBG{
+    background-image: linear-gradient(to right,var(--primary-gray) 20%,rgba(65, 65, 65, 0.58)) ;
   }
   .eachtype{
     background-color: var(--light-yello);
@@ -58,4 +66,11 @@
   }
   .eachtype .catname{
     flex: 6 ;
+  }
+  
+  .contactForm{
+    /* background-color: rgb(34, 40, 49); */
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 2rem 1.3rem;
   }
