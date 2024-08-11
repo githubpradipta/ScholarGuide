@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
-import Navbar from '../../components/my_ui/Navbar/Navbar'
 import Button from '../../components/my_ui/Button/Button'
 import DBMSIcon from '../../assets/Logo/DBMSIcon'
 import Card from '../../components/my_ui/Card/Card';
-
+import Navbar from '../../components/my_ui/Navbar/Navbar'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -28,19 +27,33 @@ export default function Home() {
       name: "Aptitude"
     }
   ]
+  const[screenWidth,setScreenWidth] = useState(window.innerWidth);
+
+  let blogCard = 1;
+  if(screenWidth>=768 && screenWidth <= 1024) blogCard = 2;
+  if(screenWidth >= 1024) blogCard = 3;
+
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: blogCard,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1800,
     pauseOnHover: true
   };
+  useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      setScreenWidth(window.innerWidth);
+    })
+    console.log(screenWidth);
+    
+  },[screenWidth])
+  
   return (
     <>
+      <Navbar mode={'dark'}/>
       <div className="homepage flex flex-col">
-      <Navbar />
         <div className="head">
           <div className="head_box">
             <p className='text-5xl'>Grow by Sharing</p>

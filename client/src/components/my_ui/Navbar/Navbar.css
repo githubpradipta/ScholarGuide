@@ -56,7 +56,7 @@ span{
     align-items: center;
     position: fixed;
     z-index: 10;
-    background-color: var(--primary-gray);
+    /* background-color: var(--primary-gray); */
 }
 .color-btn{
     background-color: var(--light-yello);
@@ -79,16 +79,17 @@ ul a{
     font-weight: 600;
     padding: 7px 9px;
     transition: all .3s ease;
-    color: var(--off-white);
+    /* color: var(--off-white); */
 }
 ul a:hover,ul a.active{
     background-color: var(--light-gray);
     color: white;
     border-radius: 6px;
 }
-.brand img{
+.brand svg{
    object-fit: cover;
-   width: 8rem;
+   width: 2rem;
+   height: 2rem;
 }
 .collapsIcon{
     display: none;
@@ -101,8 +102,20 @@ ul a:hover,ul a.active{
 .collapsIcon svg:hover{
     cursor: pointer;
 }
-.brand svg{
+.brand{
+    border: none;
+}
+.dark svg{
     color: white;
+}
+.dark p{
+    color: white;
+}
+.light svg{
+    color: black;
+}
+.light p{
+    color: black;
 }
 .login:hover{
     color: white;
