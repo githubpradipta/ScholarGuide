@@ -4,9 +4,9 @@ import DefaultProfile from '../../../assets/Logo/DefaultProfile'
 
 import './Avatar.css'
 
-export default function Avatar({img,name,username}) {
+export default function Avatar({img,name,username,onClick}) {
   return (
-        <div className="avatar mx-2 flex justify-center items-center cursor-pointer">
+        <div className="avatar mx-2 flex justify-center items-center cursor-pointer" onClick={onClick}>
             <DownArrow className={'downArrow'}/>
             {
               img? 

@@ -3,14 +3,18 @@ import RightArrow from '../../assets/Logo/RightArrow'
 import RegisterImage from '../../assets/Images/RegisterImage.svg'
 import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+
 
 
 
 export default function Register() {
     const navigate = useNavigate();
-    const [formData, useFormData] = useState({name:"",username:"",email:"",branch:"",year:"",password:""});
+    const [formData, useFormData] = useState({fullname:"",username:"",email:"",branch:"",year:"",password:""});
     const [formErrors,setFormErrors] = useState({});
     const [isSubmit,setIsSubmit] = useState(false);
+
     //    form validation
     const takeInput =(e)=>{
         let name = e.target.name;
@@ -38,8 +42,8 @@ export default function Register() {
         else if(values.password.length <= 7){
             error.password="Password length should be at least 8 characters";
         }
-        if(!values.name){
-            error.name="Name is required";
+        if(!values.fullname){
+            error.fullname="Name is required";
         }
         if(!values.email){
             error.email="Email is required";
@@ -57,7 +61,29 @@ export default function Register() {
     }
     useEffect(()=>{
         if(Object.keys(formErrors).length==0 && isSubmit){
-            console.log(formData);
+            axios.post('http://localhost:8000/user/signup',formData)
+            .then((res)=>{
+                let data = res.data;
+                console.log(res.status);
+                
+                Swal.fire({
+                    text: `${data.message}`,
+                    icon: 'success',
+                    confirmButtonText: 'Login'
+                  })
+                  .then(()=>{
+                    navigate('/signin')
+                  })
+            })
+            .catch(err =>{
+                const data = err.response.data;
+
+                Swal.fire({
+                    text: `${data.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                  })
+            })
         }
 
         
@@ -83,8 +109,8 @@ export default function Register() {
                 <div className="heading text-3xl md:text-4xl font-bold mb-6 text-[#fff642]">ScholarGuide</div>
                 <div className="craden-form flex flex-col items-center justify-center">
 
-                    <div className={`input-box flex justify-center items-center md:w-4/5 ${formErrors.name? 'border-[#FF0F15]':''}`}>
-                        <input type="text" className='px-4 py-3 w-full' name='name' placeholder='Full Name' onChange={takeInput}/>
+                    <div className={`input-box flex justify-center items-center md:w-4/5 ${formErrors.fullname? 'border-[#FF0F15]':''}`}>
+                        <input type="text" className='px-4 py-3 w-full' name='fullname' placeholder='Full Name' onChange={takeInput}/>
                     </div>
                     <p className="text-xs text-[#FF0F15]">{formErrors.name}</p>
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Button from '../Button/Button'
 import CollapsLogo from '../../../assets/Logo/CollapsLogo'
 import DownIcon from '../../../assets/Logo/DownIcon'
@@ -10,17 +10,32 @@ import Avatar from '../Avatar/Avatar'
 
 //temp
 import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
+import DropdownProfile from '../DropdownProfile/DropdownProfile'
 
 export default function Navbar({mode}) {
     const [collaps,setCollaps] = useState('uncollaps')
-    const [isLogin,setIsLogin] = useState(false);
+    const [user,setUser] = useState(null);
+    const [dropdownProfile,setDropdownProfile] = useState(false);
     const navigate = useNavigate();
 
     const collapsNav = ()=>{
         collaps=='uncollaps'? setCollaps('collaps'):setCollaps('uncollaps');
     }
+    const toggleDropdownProfile = ()=>{
+        dropdownProfile? setDropdownProfile(false) : setDropdownProfile(true);
 
+    }
+    
 
+    useEffect(()=>{
+        const user = localStorage.getItem('user');
+        setUser(JSON.parse(user));
+      },[])
+    console.log(user);
+    
+
+    
+    
   return (
     <div className={`navbar px-6 py-3 lg:px-12 ${mode === 'dark' ? 'bg-[#191919]' : 'bg-[#ffffff]'}`}>
         <Link to={'/home'} className={`brand ${mode} flex items-center justify-left`}>
@@ -37,7 +52,11 @@ export default function Navbar({mode}) {
         </div>
         <div className="right flex items-center">
             {
-                isLogin? <Avatar img={img} name={'Pradipta'} username={'pro08'}/>
+                user?
+                <>
+                 <Avatar img={img} name={user.fullname.split(' ')[0]} username={user.username} onClick={()=>{toggleDropdownProfile()}}/>
+                 {dropdownProfile ? <DropdownProfile/>:<></>}
+                </>
                 :
                 <>
                 <Button flex={true} varient={'outlined'} color={mode=='dark'?'lightbtn':'darkbtn'} className={'login'} onClick={()=>{navigate('/signin')}}>Sign In<LoginIcon/></Button>

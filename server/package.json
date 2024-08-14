@@ -1,0 +1,42 @@
+{
+  "name": "scholarguide",
+  "version": "0.0.1",
+  "description": "Backend for Sholarguide platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githubpradipta/Scholar_Guide.git"
+  },
+  "keywords": [
+    "Express.js",
+    "SQL",
+    "Node.js",
+    "Rest",
+    "APIs"
+  ],
+  "author": "Pradipta Banerjee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/githubpradipta/Scholar_Guide/issues"
+  },
+  "homepage": "https://github.com/githubpradipta/Scholar_Guide#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4",
+    "standard-http-error": "^2.0.1",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "http-error": "^0.0.6"
+  }
+}

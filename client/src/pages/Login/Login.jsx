@@ -6,6 +6,10 @@ import RightArrow from '../../assets/Logo/RightArrow';
 import LoginImage from '../../assets/Images/LoginImage.svg'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import Cookies from 'js-cookie'
+
 
 export default function Login() {
     const [showPass, useShowPass] = useState(false);
@@ -45,7 +49,23 @@ export default function Login() {
     }
     useEffect(()=>{
         if(Object.keys(formErrors).length==0 && isSubmit){
-            console.log(formData);
+            axios.post("http://127.0.0.1:8000/user/signin/",formData)
+            .then((res)=>{
+                const data = res.data;
+                
+                localStorage.setItem('auth',JSON.stringify(data.token))
+                localStorage.setItem('user',JSON.stringify(data.user))
+                navigate('/')
+                
+            })
+            .catch((err)=>{
+                const data = err.response.data;
+                Swal.fire({
+                    text: `${data.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                  })
+            })
         }
     },[formErrors])
 
