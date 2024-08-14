@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
-import Navbar from '../../components/my_ui/Navbar/Navbar'
 import Button from '../../components/my_ui/Button/Button'
 import DBMSIcon from '../../assets/Logo/DBMSIcon'
 import Card from '../../components/my_ui/Card/Card';
-
+import Navbar from '../../components/my_ui/Navbar/Navbar'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 // import Input from '../../components/my_ui/Input/Input'
 import ContactForm from '../../components/my_ui/ContactForm/ContactForm'
+import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 
 
 export default function Home() {
+  const navigate = useNavigate();
   let typesOfNotes = [
     {
       name: "Computer Fundamentals"
@@ -28,26 +30,42 @@ export default function Home() {
       name: "Aptitude"
     }
   ]
+  const[screenWidth,setScreenWidth] = useState(window.innerWidth);
+
+  let blogCard = 1;
+  if(screenWidth>=768 && screenWidth <= 1024) blogCard = 2;
+  if(screenWidth >= 1024) blogCard = 3;
+
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: blogCard,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1800,
     pauseOnHover: true
   };
+  useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      setScreenWidth(window.innerWidth);
+    })
+    console.log(screenWidth);
+    
+  },[screenWidth])
+
+  
+  
   return (
     <>
+      <Navbar mode={'dark'}/>
       <div className="homepage flex flex-col">
-      <Navbar />
         <div className="head">
           <div className="head_box">
             <p className='text-5xl'>Grow by Sharing</p>
             <span className='text-7xl font-extrabold'>Notes</span>
             <h1 className='mt-6 text-xl font-bold leading-6'>ScholarGuide helps you to get clear handy notes of any subjects.</h1>
             <div className="headBtn mt-7">
-              <Button className='py-3 lg:py-2.5 px-6' varient={'filled'}>Explore</Button>
+              <button className='py-3 lg:py-2.5 px-6' varient={'filled'} onClick={()=>{logOut()}} >Explore</button>
               <Button className={'py-3 lg:py-2.5 px-6'}varient={'outlined'}>Check Vlogs</Button>
             </div>
           </div>

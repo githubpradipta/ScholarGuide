@@ -1,0 +1,41 @@
+.overlaybtn{
+    background-color: var(--primary-yello);
+    transform: translateY(160%);
+    transition: all .2s ease-in-out;
+}
+.overlaybtn:hover{
+    background-color: var(--light-yello);
+}
+.overlay{
+    transition: all .3s ease-in-out;
+    background-image:  linear-gradient(to top, rgba(255, 255, 255, 0.845),10%,rgba(255, 255, 255, 0));
+}
+.overlay .title{
+    font-size: 18px;
+    transform: translateY(160%);
+    transition:all .2s ease-in-out;
+}
+.overlay:hover{
+    background-image:  linear-gradient(to top, rgba(0, 0, 0, 0.811),rgba(0, 0, 0, 0));
+}
+.overlay:hover>.overlaybtn{
+    transform: translateY(0%);
+}
+.overlay .title{
+    color: var(--primary-gray);
+}
+.overlay:hover>.title{
+    color: white;
+    font-size: 22px;
+    transform: translateY(0%);
+}
+.overlay:hover+img{
+    transform: scale(104%);
+}
+.notecard:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.notecard{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+

@@ -4,9 +4,9 @@
 
 :root{
   font-family: 'Switzer', sans-serif;
-  --primary-gray:rgb(25, 25, 25);
-  --light-gray:rgb(41, 41, 41);
-  --off-white:rgb(164, 164, 164);
+  --primary-gray:#191919;
+  --light-gray:#292929;
+  --off-white:#a4a4a4;
   --primary-yello:rgb(255, 246, 66);
   --light-yello:rgb(255, 255, 206);
 }
