@@ -8,3 +8,9 @@
 .Notecard:hover img{
     transform: scale(102%);
 }
+.NoteAuther{
+    background-color: rgb(56, 56, 56);
+    display: inline;
+    padding: 3px 6px;
+    border-radius: 5px;
+}

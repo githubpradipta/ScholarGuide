@@ -104,8 +104,8 @@ export default function Login() {
                         <p className="forgetPass text-xs font-bold ml-14 cursor-pointer">Forget Password?</p>
                     </div>
 
-                    <div className="login-btn flex font-medium">
-                        <button onClick={submitForm}>Sign In</button>
+                    <div className="login-btn flex justify-center items-center font-medium cursor-pointer" onClick={submitForm}>
+                        <button className='mr-2'>Sign In</button>
                         <RightArrow/>
                     </div>
 

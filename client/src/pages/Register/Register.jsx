@@ -140,8 +140,8 @@ export default function Register() {
                     <p className="text-xs text-[#FF0F15]">{formErrors.password}</p>
 
                    
-                    <div className="login-btn flex font-medium">
-                        <button onClick={submitForm}>Submit</button>
+                    <div className="login-btn flex jutify-center items-center font-medium cursor-pointer" onClick={submitForm}>
+                        <button className='mr-2'>Submit</button>
                         <RightArrow/>
                     </div>
                     

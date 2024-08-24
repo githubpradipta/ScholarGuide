@@ -40,11 +40,78 @@ const registerUser = async(req,res,next)=>{
     
 }
 
+const deleteOneSave = async(req,res,next)=>{
+    const userID = req.params.uid;
+    const noteID = req.body.noteid;
+    
+    try{
+        const result = await UserModel.findOneAndUpdate({_id:userID},{ $pull:{saves:noteID}},{returnDocument:"after"})
+        
+        res.status(201).json(result)
+        
+    }
+    catch(err){
+        next(new HttpError(500,err))
+        // console.log(err);
+    }
+} 
+const deleteAllSaves = async(req,res,next)=>{
+    const userID = req.params.uid;
+
+    try{
+        const result = await UserModel.findOneAndUpdate({_id:userID},{ $set:{saves:[]}},{returnDocument:"after"})
+        res.status(201).json(result);
+    }
+    catch(err){
+        next(new HttpError(500,err))
+        // console.log(err);
+    }
+
+}
+const editUserLikes = async(req,res,next)=>{
+    const {id,LikeElement,status} = req.body;
+    
+    try{
+        if(!status){
+            const result = await UserModel.findOneAndUpdate({_id:id},{$push:{likeNotes:LikeElement}},{ returnDocument: 'after' })
+            return res.status(201).json(result);
+            
+        }
+        else{
+            const result = await UserModel.findOneAndUpdate({_id:id},{$pull:{likeNotes:LikeElement}},{ returnDocument: 'after' })
+            return res.status(201).json(result);
+        }
+        
+    }
+    catch(err){
+        return next(new HttpError(500,err))
+    }
+}
+const editUserSaves = async(req,res,next)=>{
+    const {id,SaveElement,status} = req.body;
+    
+    try{
+        if(!status){
+            const result = await UserModel.findOneAndUpdate({_id:id},{$push:{saves:SaveElement}},{ returnDocument: 'after' })
+            return res.status(201).json(result);
+            
+        }
+        else{
+            const result = await UserModel.findOneAndUpdate({_id:id},{$pull:{saves:SaveElement}},{ returnDocument: 'after' })
+            return res.status(201).json(result);
+        }
+        
+    }
+    catch(err){
+        return next(new HttpError(500,err))
+    }
+}
+
 const loginUser = async(req,res,next)=>{
     const { username, password } = req.body;
 
     try{
-        user = await UserModel.findOne({username:username})
+        user = await UserModel.findOne({$or:[{username:username},{email:username}]})
         
         if(!user){
            return next(new HttpError(401,"username or password is wrong"))
@@ -94,4 +161,8 @@ module.exports={
     registerUser,
     loginUser,
     logOut,
+    editUserLikes,
+    editUserSaves,
+    deleteOneSave,
+    deleteAllSaves,
 }

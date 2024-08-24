@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { getNotes, setNoteLikes, createNote } = require('../Controller/NoteController.js')
+const { getNotes, setNoteLikes, createNote, getCategories, getSavedNotes} = require('../Controller/NoteController.js')
 const { getUser } = require('../Middleware/auth')
 
 
 router
-.get('/:category',getUser,getNotes)
+.get('/',getUser,getCategories)
+.get('/:categoryID',getUser,getNotes)
+.get('/saves/:uid',getSavedNotes)
 .post('/like/:id', setNoteLikes)
-.post('/', createNote)
+.post('/createNotes', createNote)
 
 module.exports = router;

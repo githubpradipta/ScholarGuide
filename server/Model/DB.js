@@ -1,5 +1,20 @@
 const mongoose = require('mongoose')
 
+
+const NotesCategorySchema = mongoose.Schema({
+    name:{
+        type: String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true,
+    },
+    img_url:{
+        type:String,
+        default: "https://img.freepik.com/free-photo/international-day-education-cartoon-style-with-stack-books_23-2151007466.jpg?t=st=1723711949~exp=1723715549~hmac=b1b7dbebf49490c612996dadee0833a3183439e0d86d6077434bca6d0ab1df6e&w=360",
+    }
+}) 
 const NotesSchema = mongoose.Schema({
     category:{
         type: String,
@@ -63,10 +78,12 @@ const UserSchema = mongoose.Schema({
     
 })
 
+const NotesCategoryModel = mongoose.model('notesCategory',NotesCategorySchema);
 const NotesModel = mongoose.model('notes',NotesSchema);
 const UserModel = mongoose.model('users',UserSchema);
 
 module.exports = {
      NotesModel,
      UserModel,
+     NotesCategoryModel,
     }

@@ -28,7 +28,6 @@
     box-shadow: 0px 0px 3px 3px var(--light-yello);
 }
 .contactForm button{
-    background-color: var(--light-yello);
     width: 100px ;
     padding: 4px 0px;
     display: flex;

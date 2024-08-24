@@ -7,6 +7,7 @@ import Register from './pages/Register/Register'
 import Page404 from './pages/404 Page/Page404'
 import Notes from './pages/Notes/Notes'
 import InnerNote from './pages/InnerNote/InnerNote'
+import Saves from './pages/Saves/Saves'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +18,8 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/notes' element={<Notes/>}/>
-      <Route path='/notes/:category' element={<InnerNote/>}/>
+      <Route path='/saves' element={<Saves/>}/>
+      <Route path='/notes/:categoryID' element={<InnerNote/>}/>
       <Route path='/signin' element={<Login/>}/>
       <Route path='/signup' element={<Register/>}/>
       <Route path='*' element={<Page404/>}/>

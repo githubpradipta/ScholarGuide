@@ -7,8 +7,8 @@
   --primary-gray:#191919;
   --light-gray:#292929;
   --off-white:#a4a4a4;
-  --primary-yello:rgb(255, 246, 66);
-  --light-yello:rgb(255, 255, 206);
+  --primary-yello:#ffb300;
+  --light-yello:#fde9ad;
 }
 html,body{
   width: 100%;
