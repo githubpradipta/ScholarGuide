@@ -1,0 +1,18 @@
+.profileMainInfo{
+    background-color: var(--primary-gray);
+    color: var(--primary-yello);
+}
+.profileDiv{
+    /* background-color: rgb(232, 232, 232); */
+}
+
+hr{
+    border: 1px solid var(--off-white);
+}
+.profileDiv>svg{
+    /* font-weight: 600; */
+    color: black !important;
+    display: block;
+    width: 8px;
+    height: 8px;
+}

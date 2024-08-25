@@ -6,7 +6,7 @@
 .contactForm textarea{
     background: transparent;
     outline: none;
-    border: 2px solid var(--off-white);
+    border: 1px solid var(--primary-yello);
     color: var(--off-white);
     padding: 7px 9px;
     border-radius: 2px;
@@ -18,6 +18,7 @@
 
 .contactForm input::placeholder,
 .contactForm textarea::placeholder{
+    font-weight: 400;
     font-size: medium;
     color: var(--off-white);
 }
@@ -25,7 +26,7 @@
 .contactForm input:focus,
 .contactForm textarea:focus{
     color: white;
-    box-shadow: 0px 0px 3px 3px var(--light-yello);
+    box-shadow: 0px 0px 3px 3px var(--primary-yello);
 }
 .contactForm button{
     width: 100px ;

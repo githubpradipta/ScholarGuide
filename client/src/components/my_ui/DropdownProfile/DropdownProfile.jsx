@@ -27,7 +27,7 @@ export default function DropdownProfile() {
         if(location.pathname=='/'){
           window.location.reload();
         }
-        else navigate('/')
+        else navigate('/');
       }
       
     })

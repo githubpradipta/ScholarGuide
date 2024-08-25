@@ -63,7 +63,7 @@ export default function Home() {
           <div className="head_box">
             <p className='text-5xl'>Grow by Sharing</p>
             <span className='text-7xl font-extrabold'>Notes</span>
-            <h1 className='mt-6 text-xl font-bold leading-6'>ScholarGuide helps you to get clear handy notes of any subjects.</h1>
+            <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block bg-[#ffb300] text-[#191919] px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
             <div className="headBtn mt-7">
               <button className='py-3 lg:py-2.5 px-6' varient={'filled'} onClick={() => { logOut() }} >Explore</button>
               <Button className={'py-3 lg:py-2.5 px-6'} varient={'outlined'}>Check Vlogs</Button>
@@ -79,19 +79,23 @@ export default function Home() {
             <p className="text-md font-normal leading-6 mt-4 px-1 md:px-44">Lets take an overview about what actualy <span className='text-white font-bold'>You Can Get</span> from here and how can it will make your <span className='text-white font-bold'>Academic Journy Easy</span>.</p>
           </div>
 
-          <div className="definitionBox text-white py-4 px-4 mx-10 mt-6 h-[300px] lg:h-auto overflow-scroll">
-            <div className="AboutTitle text-xl font-bold">You need to know first</div>
-            <div className='Abouttext text-white mt-6'>Welcome to <span className='font-bold'>ScholarGuide</span> 🎓✨ This is your go-to platform for sharing and discovering valuable student notes. On ScholarGuide, you can easily upload your own notes and access a diverse collection of notes shared by others. 📚🔍
-              Stay updated with the latest in tech by diving into our engaging tech blogs. 💻📰 Plus, enjoy a peer learning experience where you can rate the notes you use, helping others find the highest quality content based on your feedback. 🌟📈
-              With ScholarGuide, you get a dynamic, interactive space to enhance your learning journey through collaboration and shared knowledge. Join us and become part of a community that values and elevates your educational experience! 🌐👩‍🎓👨‍🎓
+          <div className="definitionBox text-white py-4 px-4 lg:mx-20 mx-4 mt-12 h-[300px] lg:h-auto overflow-scroll">
+            <div className="AboutTitle lg:inline-block text-2xl font-bold text-[#ffb300] bg-[#191919]  px-3 py-1.5 rounded-[8px]">About It</div>
+            <div className='Abouttext text-white mt-6'>
+              <ul className='flex gap-3 md:gap-4 flex-col md:flex-row md:items-start'>
+                <li className='flex-1 text-justify'>Welcome to <span className='font-bold text-[#191919]'>ScholarGuide</span>🎓✨ This is your go-to platform for sharing and discovering valuable student notes. On ScholarGuide, you can easily upload your own notes and access a diverse collection of notes shared by others. 📚🔍</li>
+                <li className='flex-1 text-justify'>Stay updated with the latest in tech by diving into our engaging tech blogs. 💻📰 Plus, enjoy a peer learning experience where you can rate the notes you use, helping others find the highest quality content based on your feedback. 🌟📈</li>
+                <li className='flex-1 text-justify'>With ScholarGuide, you get a dynamic, interactive space to enhance your learning journey through collaboration and shared knowledge. Join us and become part of a community that values and elevates your educational experience! 🌐👩‍🎓👨‍🎓</li>
+    
+              </ul>
             </div>
           </div>
 
-          <div className="aboutCard mx-3 px-4 py-4 text-white flex justify-center items-center flex-col-reverse gap-6 lg:flex-row mt-6">
+          <div className="aboutCard lg:mx-16 px-4 py-4 text-white flex justify-between items-center flex-col-reverse gap-6 lg:flex-row mt-6">
 
             {/* Left Section */}
 
-            <div className="aboutLeft flex-1 lg:mr-5">
+            <div className="aboutLeft flex-1">
               {/* heading */}
               <div className="heading text-2xl font-bold text-[#ffcb00]">Benifits</div>
 

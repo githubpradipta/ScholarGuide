@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+::-webkit-scrollbar {
+  display: none; 
+}
+
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 6px; /* Adjust height as needed */
+  background: linear-gradient(to right, #ffb300, #ff5100); 
+  z-index: 9999; /* Ensures it's on top of other content */
+  border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+  transition: width 0.25s ease; /* Smooth width transition */
+}
+
 :root{
   font-family: 'Switzer', sans-serif;
   --primary-gray:#191919;
   --light-gray:#292929;
+  --extralight-gray:#656565;
   --off-white:#a4a4a4;
   --primary-yello:#ffb300;
   --light-yello:#fde9ad;
