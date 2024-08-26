@@ -1,6 +1,6 @@
 # ScholarGuide
 
-**Scholar_Guide** is a web platform designed to facilitate peer-to-peer learning and collaboration. It helps students prepare for exams more effectively by providing a centralized location for sharing and accessing study notes.
+**ScholarGuide** is a web platform designed to facilitate peer-to-peer learning and collaboration. It helps students prepare for exams more effectively by providing a centralized location for sharing and accessing study notes.
 
 ## Features
 
