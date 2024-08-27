@@ -40,13 +40,16 @@
   .head_box h1{
     color: var(--off-white);
   }
-  .notetypes p{
-    color: var(--off-white);
-  }
-  .blurBG{
-    background-color: rgba(255, 255, 206, 0.164);
-    border-radius: 30px;
-  }
+  .aboutLeft {
+    background-color: rgb(35, 35, 35);
+    padding: 20px;
+    border-radius: 22px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+
   .grayBG{
     background-image: linear-gradient(to right,var(--primary-gray) 20%,rgba(65, 65, 65, 0.58)) ;
   }
@@ -74,3 +77,60 @@
     border-radius: 10px;
     padding: 2rem 1.3rem;
   }
+
+  .aboutP{
+    font-weight: 300;
+  }
+
+  /* animation css */
+
+  .aboutSubheading {
+    font-size: large;
+    font-weight: 500;
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    background: linear-gradient(270deg, #ff8400, #ff9500, #ff4500, #ffcb00);
+    background-size: 400% 400%; /* Control the animation smoothness */
+    animation: gradientBackground 8s ease infinite; /* Duration and timing of the animation */
+    color: white; /* Text color to ensure good contrast */
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.definitionBox {
+  background: linear-gradient(270deg, #ff8400, #ff9500, #ff4500, #ffcb00);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+  border-radius: 15px; /* Example border-radius */
+}
+.definitionBox::-webkit-scrollbar{
+  display: none;
+}
+
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+
+
+
+

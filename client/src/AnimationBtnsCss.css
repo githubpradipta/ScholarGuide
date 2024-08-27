@@ -1,0 +1,194 @@
+.container-eg-btn-2 {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 10px;
+    padding: .5em;
+    line-height: normal;
+}
+
+.container-eg-btn-2 .button {
+    color: #1ea664;
+    background: #e7ffcb;
+    margin: 10px;
+    padding: 12px 15px;
+    border: 2px solid #1ea664;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    z-index: 1;
+}
+
+.container-eg-btn-2 .button:hover {
+    cursor: pointer;
+    color: #e7ffcb;
+}
+
+.container-eg-btn-2 .button-1:hover {
+    box-shadow: inset 0 0 0 2em #1ea664;
+}
+
+.container-eg-btn-2 .button-2:hover {
+    box-shadow: inset 0 3.5em 0 0 #1ea664;
+}
+
+.container-eg-btn-2 .button-3:hover {
+    box-shadow: inset 8.5em 0 0 0 #1ea664;
+}
+
+.container-eg-btn-2 .button-4:hover {
+    box-shadow: inset -5em 0 0 0 #1ea664, inset 5em 0 0 0 #1ea664;
+}
+
+.container-eg-btn-2 .button-5:before {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    bottom: 0;
+    background: #1ea664;
+    height: 120%;
+    left: -10%;
+    transform: skewX(20deg);
+    z-index: -1;
+}
+
+.container-eg-btn-2 .button-5:hover:before {
+    width: 120%;
+}
+
+.container-eg-btn-2 .button-6:before {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    bottom: 0;
+    background: #1ea664;
+    height: 120%;
+    left: -10%;
+    transform: skewX(20deg);
+    z-index: -1;
+}
+
+.container-eg-btn-2 .button-6:hover:before {
+    width: 62%;
+}
+
+.container-eg-btn-2 .button-6:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    right: 50%;
+    bottom: 0;
+    height: 4px;
+    background: #1ea664;
+}
+
+.container-eg-btn-2 .button-6:after {
+    height: 120%;
+    right: -10%;
+    transform: skewX(20deg);
+    z-index: -1;
+}
+
+.container-eg-btn-2 .button-6:hover:after {
+    width: 62%;
+}
+
+.container-eg-btn-2 .button-7:before {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    top: 50%;
+    background: #1ea664;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    left: 50%;
+    z-index: -1;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+}
+
+.container-eg-btn-2 .button-7:hover:before {
+    width: 11em;
+    height: 11em;
+}
+
+.container-eg-btn-2 .button-8:before,
+.container-eg-btn-2 .button-8:after {
+    position: absolute;
+    top: 50%;
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #1ea664;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.container-eg-btn-2 .button-8:before {
+    left: -20px;
+    transform: translate(-50%, -50%);
+}
+
+.container-eg-btn-2 .button-8:after {
+    right: -20px;
+    transform: translate(50%, -50%);
+}
+
+.container-eg-btn-2 .button-8:hover:before {
+    -webkit-animation: circle-left 0.7s both;
+    animation: circle-left 0.7s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+@keyframes circle-left {
+    0% {
+        left: -20px;
+    }
+
+    50% {
+        left: 50%;
+        width: 20px;
+        height: 20px;
+    }
+
+    100% {
+        left: 50%;
+        width: 375px;
+        height: 375px;
+    }
+}
+
+.container-eg-btn-2 .button-8:hover:after {
+    -webkit-animation: circle-right 0.7s both;
+    animation: circle-right 0.7s both;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+@keyframes circle-right {
+    0% {
+      right: -20px;
+      width: 20px;
+      height: 20px;
+    }
+    50% {
+      right: 50%;
+      width: 20px;
+      height: 20px;
+    }
+    100% {
+      right: 50%;
+      width: 375px;
+      height: 375px;
+    }
+  }
