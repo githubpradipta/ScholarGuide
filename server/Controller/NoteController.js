@@ -1,17 +1,56 @@
-const { NotesModel } = require('../Model/DB');
+const { NotesModel, NotesCategoryModel, UserModel } = require('../Model/DB');
 const HttpError = require("standard-http-error")
 
-const getNotes = async (req,res,next)=>{
-    const cat = req.params.category;
-    // console.log(req.cookies);
-    
+// ADmin access only
+const createNoteCategory = async(req,res,next)=>{
+    const data = req.body;
     
     try{
-        const result = await(NotesModel.find({category:cat}));
+        const resut = NotesCategoryModel.create(data);
+        res.status(201).json({
+            message:"Category Successfully Created",
+        })
+    }
+    catch(err){
+        return next(new HttpError(500));
+    }
+}
+
+//User access
+const getCategories = async(req,res,next)=>{
+    try{
+        const result = await NotesCategoryModel.find();
+        res.status(201).json(result);
+    }
+    catch(err){
+        return next(new HttpError(500));
+    }
+}
+const getNotes = async (req,res,next)=>{
+    const id = req.params.categoryID;
+    // console.log(req.cookies);
+    
+    try{
+        const { name } = await NotesCategoryModel.findOne({_id:id})
+        const result = await(NotesModel.find({category:name}));
         res.status(200).json(result);
     }
     catch(err){
         next(HttpError(500,err.message))
+    }
+}
+const getSavedNotes = async(req,res,next)=>{
+    const userID = req.params.uid;
+    
+    try{
+        const { saves } = await UserModel.findOne({_id:userID})
+        const result = await NotesModel.find({_id:{$in: saves}})
+        
+        res.status(201).json(result);
+    }
+    catch(err){
+        return next(new HttpError(500,err));
+        
     }
 }
 const setNoteLikes = async(req,res,next)=>{
@@ -23,10 +62,12 @@ const setNoteLikes = async(req,res,next)=>{
             {$set: {likesCount:newLikes}},
         ));
 
-        res.status(200).json(result)
+        res.status(200).json({
+            message:"Likes updated",
+        })
 
     } catch (err) {
-        res.json(err)   
+        return next(new HttpError(500));  
     }
 }
 const createNote = async(req,res,next)=>{
@@ -34,14 +75,19 @@ const createNote = async(req,res,next)=>{
 
     try {
         const result = await(NotesModel.create(data));
-        res.status(200).json(result)
-        console.log(result);
+        res.status(200).json({
+            message:"Note successfully uploaded"
+        })
+        
     } catch (err) {
-        res.json(err)   
+        return next(new HttpError(500))  
     }
 }
 module.exports = {
     getNotes,
+    getSavedNotes,
     setNoteLikes,
     createNote,
+    getCategories,
+    createNoteCategory,
 }

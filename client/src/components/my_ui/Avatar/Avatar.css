@@ -3,15 +3,20 @@
     height: 2.5rem;
 }
 .downArrow{
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
 }
 .avatar svg{
     margin: 0 ;
-    color: white;
     margin-right: 4px;
     transition: all .2s ease;
 }
 .avatar:hover > .downArrow{
     transform: translateY(20%);
 }
+.user-select-none {
+    user-select: none; /* Prevents text selection */
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
+  }

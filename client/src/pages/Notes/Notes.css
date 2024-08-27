@@ -1,41 +1,31 @@
+@media (max-width: 640px) {
+    .notecard{
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+    .overlaybtn{
+        transform: translateX(0px) !important;
+    }
+}
 .overlaybtn{
-    background-color: var(--primary-yello);
-    transform: translateY(160%);
-    transition: all .2s ease-in-out;
-}
-.overlaybtn:hover{
-    background-color: var(--light-yello);
-}
-.overlay{
-    transition: all .3s ease-in-out;
-    background-image:  linear-gradient(to top, rgba(255, 255, 255, 0.845),10%,rgba(255, 255, 255, 0));
-}
-.overlay .title{
-    font-size: 18px;
-    transform: translateY(160%);
-    transition:all .2s ease-in-out;
-}
-.overlay:hover{
-    background-image:  linear-gradient(to top, rgba(0, 0, 0, 0.811),rgba(0, 0, 0, 0));
-}
-.overlay:hover>.overlaybtn{
-    transform: translateY(0%);
-}
-.overlay .title{
-    color: var(--primary-gray);
-}
-.overlay:hover>.title{
+    font-size: 9px;
+    background-color: rgb(17, 17, 17);
     color: white;
-    font-size: 22px;
-    transform: translateY(0%);
-}
-.overlay:hover+img{
-    transform: scale(104%);
-}
-.notecard:hover{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transform: translateX(90px);
+    transition: all .1s ease-in-out;
+    &:hover{
+        background-color: rgb(47, 47, 47);
+    }
 }
 .notecard{
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    
+    transform: scale(101%);
+}
+}
+.notecard:hover .overlaybtn{
+    transform: translateX(0px);
 }
 

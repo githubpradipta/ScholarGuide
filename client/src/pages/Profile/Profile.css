@@ -1,0 +1,55 @@
+@media (min-width:1024px) {
+    .dashboardItem:hover{
+        box-shadow: rgba(255, 191, 0, 0.25) 0px 30px 60px -12px, rgba(255, 183, 1, 0.801) 0px 18px 36px -18px;
+        transform: scale(102%);
+        background-color: var(--primary-yello);
+    }
+    .logout:hover{
+        box-shadow: rgba(255, 72, 55, 0.25) 0px 30px 60px -12px, rgba(255, 0, 0, 0.491) 0px 18px 36px -18px;
+        transform: scale(102%);
+        background-color: rgba(255, 132, 132, 0.468);
+    }
+    .profileright,.profileleft{
+        box-shadow: rgba(255, 187, 1, 0.25) 0px 50px 100px -20px, rgba(238, 194, 0, 0.639) 0px 30px 60px -30px;
+    }
+    .container-eg-btn-2{
+        display: flex !important;
+    }
+}
+@media (max-width:1024px) {
+    .container-eg-btn-2{
+        display: none !important;
+    }
+}
+
+.profileMainInfo{
+    background-color: var(--primary-gray);
+    color: var(--primary-yello);
+}
+
+
+hr{
+    border: 1px solid var(--off-white);
+}
+.profileDiv>svg{
+    /* font-weight: 600; */
+    color: black !important;
+    display: block;
+    width: 8px;
+    height: 8px;
+}
+.social-icons:hover>svg{
+    fill: #ffb300 !important;
+}
+.editProfileBtn{
+    background-color: var(--light-yello) !important;
+    color: var(--primary-gray) !important;
+    border: var(--light-yello) !important;
+    &::before{
+        background: var(--primary-yello) !important;
+    }
+}
+.container-eg-btn-2{
+    margin: 0 !important;
+    padding: 0 !important;
+}

@@ -1,0 +1,30 @@
+@media (max-width: 640px) {
+    .cardList .card{
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+        &:hover{
+            transform: none;
+        }
+    }
+}
+.saveCardText .category{
+    display: inline;
+    background-color: rgb(222, 222, 222);
+    /* background-color: #dededed2; */
+}
+.saveCardText{
+    flex:2
+}
+.saveCardText .author{
+    color: #6e6e6e;
+}
+.savesSection{
+    background-color: #d8d8d8a6;
+}
+.cardList .card{
+    background-color: #eaeaeaa2;
+    transition: all .2s ease-in-out;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+        transform: scale(101%);
+    }
+}
