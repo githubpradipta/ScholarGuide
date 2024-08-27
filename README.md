@@ -29,10 +29,10 @@ To get started with Scholar_Guide, follow these steps:
    ```bash
     npm install
 
-4. **Start the Development Server:**
+4. **Start the Development Servers (Client & Server both):**
 
    ```bash
-    npm start
+    ./run.sh
 
 Open your browser and go to http://localhost:3000 to view the application.
 
