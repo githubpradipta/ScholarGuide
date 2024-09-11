@@ -17,7 +17,7 @@ export default function Avatar({img,mode,name,onClick,dropdown}) {
             }
             {
               img? 
-              <img className='rounded-full w-9 h-9 mr-2' src={img} alt="" srcset="" />
+              <img className='rounded-full w-9 h-9 mr-2 object-cover' src={img} alt="" srcset="" />
               :
               <DefaultProfile className={`dfImage w-8 h-8 ${mode=='dark'?'text-white':'text-black'}`}/>
             }

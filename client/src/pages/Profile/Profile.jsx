@@ -68,7 +68,7 @@ export default function Profile() {
                             <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="" srcset="" />
                         </div>
 
-                        <div className="text text-center mr-2 lg:mr-0">
+                        <div className="text lg:text-center mr-2 lg:mr-0">
                             <div className="name text-xl lg:text- font-bold">{user.fullname}</div>
                             <div className="flex items-center w-full lg:justify-center">
                                 <div className="username text-sm font-semibold text-[#656565]">@{user.username}</div>

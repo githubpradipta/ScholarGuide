@@ -3,18 +3,33 @@ import LeftArrow from '../../assets/Logo/LeftArrow'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { MutatingDots } from 'react-loader-spinner'
-
-import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
+import DefaultImg from "../../assets/Images/DefaultProfileImage.png"
 import './EditProfile.css'
+import ImageUploadWithoutForm from '../ImageUpload/ImageUpload'
 
+const Modal = ({ isOpen, onClose, children }) => {
+    if (!isOpen) return null; // If not open, don't render anything
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+            <div className="bg-white p-6 rounded-lg shadow-lg relative w-96 max-w-full">
+                <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-gray-800">
+                    X
+                </button>
+                <ImageUploadWithoutForm onClose={onClose}/>
+            </div>
+        </div>
+    );
+};
 
 export default function EditProfile() {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [fadeClass, setFadeClass] = useState('fade-in');
     const user = JSON.parse(localStorage.getItem('user'));
 
-    useEffect(()=>{
+    useEffect(() => {
         const user_id = user._id;
         setFadeClass('fade-in');
         setLoading(true);
@@ -38,12 +53,12 @@ export default function EditProfile() {
                 setFadeClass('fade-out');
                 setLoading(false);
             })
-    },[])
-    
-    
+    }, [])
+
+
     const [editData, setEditData] = useState({
         fullname: user.fullname ? user.fullname : "",
-        gender: user.gender? user.gender:"",
+        gender: user.gender ? user.gender : "",
         email: user.email ? user.email : "",
         username: user.username ? user.username : "",
         contact: user.contact ? user.contact : "",
@@ -91,12 +106,6 @@ export default function EditProfile() {
                 setLoading(false);
             })
     }
-    // const changeProfileImage = () => {
-    //     axios.post()
-    // }
-
-
-    // useEffect(() => {
     //     setEditData({
     //         fullname: user.fullname ? user.fullname : "",
     //         gender: "",
@@ -111,14 +120,6 @@ export default function EditProfile() {
     //         city: user.city ? user.city : "",
     //     })
     // }, [submitData]);
-
-
-    
-
-    
-
-
-
 
 
 
@@ -150,18 +151,24 @@ export default function EditProfile() {
                                 <div className="text-xl font-medium">Back</div>
                             </div>
 
-                            <div className="profileHeading flex-1 text-center text-2xl lg:text-3xl font-bold">Profile</div>
+                            <div className="profileHeading flex-1 text-center text-2xl lg:text-3xl font-bold" onClick={()=>{setIsModalOpen(true)}}>Profile</div>
                             <div className="submitbtn text-xl font-semibold text-orange-400 cursor-pointer" onClick={submitData}>Confirm</div>
                         </div>
 
                         {/* ProfileTop */}
                         <div className="profileTop text-white flex flex-col items-center my-10">
                             <div className="profilePic my-4 w-[120px] h-[120px] lg:w-[70px] lg:h-[70px] rounded-[50%]">
-                                <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="" srcset="" />
+                                <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="image" srcset="" />
                             </div>
                             <div className="name text-2xl font-bold ">{user.fullname}</div>
                             <div className="username text-xl font-medium text-[#a4a4a4] mt-1">@{user.username}</div>
                         </div>
+
+                        <Modal isOpen={isModalOpen} onClose={() => { setIsModalOpen(false) }}>
+                            <h2>This is a popup!</h2>
+                            <p>You can render any component here.</p>
+                            <button onClick={() => { setIsModalOpen(false) }}>Close Modal</button>
+                        </Modal>
 
 
                         <div className="InputDetails w-full">

@@ -7,6 +7,13 @@ const secretKey = "nsdjeh83849"
 const {uploadOnCloudinary} = require('../Utility/cloudinary.js')
 
 
+const DemoApi = async(req,res,next)=>{
+    console.log(req.file);
+    res.json({
+        message:"ok"
+    })
+    
+}
 const getUser = async(req,res,next) => {
     const id = req.params.id;
 
@@ -54,10 +61,7 @@ const editProfile = async(req,res,next)=>{
     const updatedData = req.body;
     const id = req.params.id;
     
-    try{
-        const response = await uploadOnCloudinary(req.file.path);
-        updatedData.profile_url = response.secure_url;
-        
+    try{     
         const updatedUser = await UserModel.findOneAndUpdate({_id:id},{$set:updatedData},{returnDocument:'after'});
         return res.json({
             message:"User details updated",
@@ -71,6 +75,22 @@ const editProfile = async(req,res,next)=>{
     
 }
 const editProfileImage = async(req,res,next)=>{
+    const id = req.params.id;
+    
+    try{
+        const response = await uploadOnCloudinary(req.file.path);
+        
+        const img_url = response.secure_url;
+        
+        const updatedUser = await UserModel.findOneAndUpdate({_id:id},{$set:{profile_url:img_url}},{returnDocument:'after'});
+        return res.json({
+            message:"User details updated",
+            user:updatedUser
+        })
+    }
+    catch(err){
+        next(new HttpError(500,err));
+    }
 
 }
 
@@ -201,4 +221,6 @@ module.exports={
     deleteOneSave,
     deleteAllSaves,
     editProfile,
+    editProfileImage,
+    DemoApi,
 }
