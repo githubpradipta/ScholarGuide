@@ -9,6 +9,7 @@ import Notes from './pages/Notes/Notes'
 import InnerNote from './pages/InnerNote/InnerNote'
 import Saves from './pages/Saves/Saves'
 import Profile from './pages/Profile/Profile'
+import EditProfile from './pages/EditProfile/EditProfile'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +30,7 @@ function App() {
       <Route path='/notes' element={<Notes/>}/>
       <Route path='/saves' element={<Saves/>}/>
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/profile/edit' element={<EditProfile/>}/>
       <Route path='/notes/:categoryID' element={<InnerNote/>}/>
       <Route path='/signin' element={<Login/>}/>
       <Route path='/signup' element={<Register/>}/>

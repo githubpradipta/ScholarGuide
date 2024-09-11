@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Profile.css'
 import '../../AnimationBtnsCss.css'
 import LeftArrow from '../../assets/Logo/LeftArrow'
@@ -18,11 +18,18 @@ import GmailIcon from '../../assets/Logo/GmailIcon'
 import LocationIcon from '../../assets/Logo/LocationIcon'
 import CollegeIcon from '../../assets/Logo/CollegeIcon'
 import StarIcon from '../../assets/Logo/StarIcon'
-
+import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
 
 export default function Profile() {
-    const user = JSON.parse(localStorage.getItem('user'))
+    const [user,setUser] = useState({});
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        const user = localStorage.getItem('user');
+        setUser(JSON.parse(user));
+      },[])    
+    
+
     const logOut = () => {
         Swal.fire({
             title: 'Want to logout',
@@ -57,8 +64,8 @@ export default function Profile() {
 
                     <div className="profileMainInfo  py-4 px-4 rounded-xl flex lg:flex-col gap-2 justify-center items-center">
 
-                        <div className="profilePic w-[90px] h-[90px] lg:w-[70px] lg:h-[70px] rounded-[50%]">
-                            <img className='w-full h-full object-cover rounded-[50%]' src="https://imgs.search.brave.com/5cAi-jXDh0PdCGuh2vvsggwMUWvGlmTFmbCQ7jYJ9OI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc" alt="" srcset="" />
+                        <div className="profilePic w-[90px] h-[90px] lg:w-[70px] lg:h-[70px] rounded-[50%] mr-4 md:mr-0">
+                            <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="" srcset="" />
                         </div>
 
                         <div className="text text-center mr-2 lg:mr-0">
@@ -71,10 +78,10 @@ export default function Profile() {
 
                         </div>
 
-                        <div className="editProfileIcon ml-2 lg:hidden"><EditIcon className='' /></div>
+                        <div className="editProfileIcon ml-2 lg:hidden" onClick={()=>{navigate('/profile/edit')}}><EditIcon className='' /></div>
 
-                        <div className="container-eg-btn-2">
-                            <Link className="editProfileBtn button button-5 rounded-md text-xs font-light">Edit Profile</Link>
+                        <div className="container-eg-btn-2" onClick={()=>{navigate('/profile/edit')}}>
+                            <Link className="editProfileBtn button button-5 rounded-md text-xs font-light" >Edit Profile</Link>
                         </div>
 
                         <div className="socialLinks hidden lg:flex justify-center item-center gap-8 my-3">

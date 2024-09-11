@@ -12,6 +12,7 @@ import AboutImage from '../../assets/Images/AboutImage.svg'
 import ContactForm from '../../components/my_ui/ContactForm/ContactForm'
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import RightArrow from '../../assets/Logo/RightArrow';
 
 
 
@@ -58,36 +59,41 @@ export default function Home() {
   return (
     <>
       <Navbar mode={'dark'} />
-      <div className="homepage flex flex-col">
-        <div className="head">
+      <div className="homepage flex flex-col pb-8">
+        <div className="head lg:my-[150px] my-[60px] mt-[150px]">
           <div className="head_box">
             <p className='text-5xl'>Grow by Sharing</p>
             <span className='text-7xl font-extrabold'>Notes</span>
-            <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block bg-[#ffb300] text-[#191919] px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
+            <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block bg-[#ffc53c92] text-[#ffc53c] mx-2 px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
             <div className="headBtn mt-7">
-              <button className='py-3 lg:py-2.5 px-6' varient={'filled'} onClick={() => { logOut() }} >Explore</button>
-              <Button className={'py-3 lg:py-2.5 px-6'} varient={'outlined'}>Check Vlogs</Button>
+              <button class="mt-14 py-1 flex justify-center items-center text-sm text-white hover:text-white lg:py-1.5 px-6 bg-[#292929] rounded-3xl border border-white hover:border-[#ffb300] transition-all duration-500 ease glowing-btn" onClick={() => { logOut() }}>
+                Try it now 🎉
+                <div class="flex justify-center items-center w-6 h-6 ml-1">
+                  <RightArrow />
+                </div>
+              </button>
+
             </div>
           </div>
 
         </div>
 
-        <div className="aboutPage flex flex-col items-center text-center mx-4">
+        <div className="aboutPage py-14 rounded-2xl flex flex-col items-center text-center mx-4 lg:mt-10">
 
-          <div className="textbox px-2 lg:mx-20">
-            <h1 className='text-3xl lg:text-4xl font-bold'>What is <span className='text-[#ffb300]'>ScholarGuide</span> !!</h1>
-            <p className="text-md font-normal leading-6 mt-4 px-1 md:px-44">Lets take an overview about what actualy <span className='text-white font-bold'>You Can Get</span> from here and how can it will make your <span className='text-white font-bold'>Academic Journy Easy</span>.</p>
+          <div className="textbox px-4 lg:mx-20">
+            <h1 className='text-2xl lg:text-4xl font-bold'>What is <span className='text-[#ffb300]'>ScholarGuide</span> !!</h1>
+            <p className="text-xs lg:text-[18px] font-normal leading-6 mt-4 px-1 md:px-44">Lets take an overview about what actualy <span className='text-white font-bold'>You Can Get</span> from here and how can it will make your <span className='text-white font-bold'>Academic Journy Easy</span>.</p>
           </div>
 
-          <div className="definitionBox text-white py-4 px-4 lg:mx-20 mx-4 mt-12 h-[300px] lg:h-auto overflow-scroll">
+          <div className="text-white py-4 px-4 lg:mx-20 mx-4 mt-12 lg:h-auto">
             <div className="AboutTitle lg:inline-block text-2xl font-bold text-[#ffb300] bg-[#191919]  px-3 py-1.5 rounded-[8px]">About It</div>
-            <div className='Abouttext text-white mt-6'>
-              <ul className='flex gap-3 md:gap-4 flex-col md:flex-row md:items-start'>
-                <li className='flex-1 text-justify'>Welcome to <span className='font-bold text-[#191919]'>ScholarGuide</span>🎓✨ This is your go-to platform for sharing and discovering valuable student notes. On ScholarGuide, you can easily upload your own notes and access a diverse collection of notes shared by others. 📚🔍</li>
-                <li className='flex-1 text-justify'>Stay updated with the latest in tech by diving into our engaging tech blogs. 💻📰 Plus, enjoy a peer learning experience where you can rate the notes you use, helping others find the highest quality content based on your feedback. 🌟📈</li>
-                <li className='flex-1 text-justify'>With ScholarGuide, you get a dynamic, interactive space to enhance your learning journey through collaboration and shared knowledge. Join us and become part of a community that values and elevates your educational experience! 🌐👩‍🎓👨‍🎓</li>
-    
-              </ul>
+            <div className='Abouttext text-white lg:mt-3'>
+              <div className='flex flex-col gap-3 md:gap-4 md:flex-row md:items-start'>
+                <div className='definitionBox py-4 px-4 flex-1 text-center my-3 lg:m-0'>Welcome to <span className='font-bold text-[#191919]'>ScholarGuide</span>🎓✨ This is your go-to platform for sharing and discovering valuable student notes. On ScholarGuide, you can easily upload your own notes and access a diverse collection of notes shared by others. 📚🔍</div>
+                <div className='definitionBox py-4 px-4 flex-1 text-center my-3 lg:m-0'>Stay updated with the latest in tech by diving into our engaging tech blogs. 💻📰 Plus, enjoy a peer learning experience where you can rate the notes you use, helping others find the highest quality content based on your feedback. 🌟📈</div>
+                <div className='definitionBox py-4 px-4 flex-1 text-center my-3 lg:m-0'>With ScholarGuide, you get a dynamic, interactive space to enhance your learning journey through collaboration and shared knowledge. Join us and become part of a community that values and elevates your educational experience! 🌐👩‍🎓👨‍🎓</div>
+
+              </div>
             </div>
           </div>
 

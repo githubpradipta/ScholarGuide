@@ -9,7 +9,7 @@ export default function ContactForm() {
         <div className="input w-full grid grid-row-3 gap-2">
         <input type="text" placeholder='Name' name='Name' className=''/>
         <input type="email" placeholder='E-mail' name='Email' />
-        <textarea name="query" placeholder='Your Query' id=""/>
+        <textarea className='h-10 min-h-10 max-h-60' name="query" placeholder='Your Query' id=""/>
         </div>
         <button className='bg-[#ffcb00]'>Send <DoubleRightArrow/></button>
 

@@ -8,7 +8,7 @@ import './Avatar.css'
 
 export default function Avatar({img,mode,name,onClick,dropdown}) {
   return (
-        <div className="avatar lg:mx-2 flex justify-center items-center cursor-pointer lg:ml-3 lg:bg-transparent md:bg-transparent bg-black px-4 py-2 rounded-md" onClick={onClick}>
+        <div className="avatar lg:mx-2 flex justify-center items-center cursor-pointer lg:ml-3 lg:bg-transparent md:bg-transparent bg-black px-4 py-3.5 rounded-md w-[92%]" onClick={onClick}>
             {
               dropdown?
               <UpArrow className={`downArrow hidden lg:block ${mode==='dark' ? 'text-white':'text-black'}`}/>

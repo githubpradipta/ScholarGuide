@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 
 export default function Register() {
     const navigate = useNavigate();
-    const [formData, useFormData] = useState({fullname:"",username:"",email:"",branch:"",year:"",password:""});
+    const [formData, useFormData] = useState({fullname:"",username:"",email:"",department:"",year:"",password:""});
     const [formErrors,setFormErrors] = useState({});
     const [isSubmit,setIsSubmit] = useState(false);
 
@@ -51,8 +51,8 @@ export default function Register() {
         else if(!regex.test(values.email)){
             error.email="Plese enter a valid email id"
         }
-        if(!values.branch){
-            error.branch="Branch is required";
+        if(!values.department){
+            error.department="Department is required";
         }
         if(!values.year){
             error.year="Year is required";
@@ -125,7 +125,7 @@ export default function Register() {
                     <p className="text-xs text-[#FF0F15]">{formErrors.email}</p>
 
                     <div className={`input-box flex justify-center items-center md:w-4/5 ${formErrors.branch? 'border-[#FF0F15]':''}`}>
-                        <input type="text" className='px-4 py-3 w-full' name='branch' placeholder='Branch Name' onChange={takeInput}/>
+                        <input type="text" className='px-4 py-3 w-full' name='department' placeholder='Department Name' onChange={takeInput}/>
                     </div>
                     <p className="text-xs text-[#FF0F15]">{formErrors.branch}</p>
 

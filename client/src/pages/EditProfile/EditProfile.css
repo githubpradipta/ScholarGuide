@@ -1,0 +1,88 @@
+.editprofilePage input,
+.editprofilePage textarea{
+    background-color: #3d3d3d;
+    padding: 15px 10px;
+    color: white;
+    border-radius: 7px;
+    margin: 5px 0px;
+    outline: none;
+    border: 2px solid transparent;
+
+    &:hover{
+        background-color: #5a5a5a;
+        border: 2px solid #767676;
+    }
+}
+.editprofilePage input::placeholder{
+    font-weight:600 ;
+}
+.custom-select {
+    background-color: #3d3d3d;
+    padding: 15px 10px;
+    color: white;
+    border-radius: 7px;
+    margin: 5px 0;
+    outline: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  
+  .custom-dropdown .dropdown-menu {
+    background-color: #3d3d3d;
+    border-radius: 7px;
+    color: white;
+    list-style-type: none;
+    padding: 0;
+    border: 2px solid transparent;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-dropdown .dropdown-menu.show {
+    max-height: 300px; /* You can adjust the max height */
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-item {
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #575757;
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards; /* Fade-in over 0.5 seconds */
+  }
+  
+  .fade-out {
+    opacity: 1;
+    animation: fadeOut 1.5s forwards; /* Fade-out over 0.5 seconds */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  
+

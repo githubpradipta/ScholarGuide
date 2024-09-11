@@ -123,7 +123,7 @@ export default function InnerNote() {
     return (
         <>
             <Navbar mode={'light'} />
-            <div className={`InnerNoteBody flex flex-col justify-center items-center w-screen py-10 lg:pt-16 ${data.length==0 ? 'h-screen':''}`}>
+            <div className={`InnerNoteBody flex flex-col justify-center items-center w-screen min-h-screen py-10 lg:pt-16 ${data.length==0 ? 'h-screen':''}`}>
                 {
                     data.length == 0 ?
                         <>

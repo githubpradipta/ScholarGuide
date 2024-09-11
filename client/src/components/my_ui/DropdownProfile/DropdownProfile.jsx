@@ -3,7 +3,7 @@ import css from './DropdownProfile.module.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
-export default function DropdownProfile() {
+export default function DropdownProfile({className}) {
   const navigate = useNavigate();
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem('user'));
@@ -36,7 +36,7 @@ export default function DropdownProfile() {
 
   return (
     
-    <div className={`${css.dropdownmenu} flex flex-col py-3`}>
+    <div className={`${css.dropdownmenu} flex-col py-3 ${className}`}>
       <div className="naming mb-2 cursor-pointer px-4" onClick={()=>{navigate('/profile')}}>
         <p className='fullname text-sm font-bold'>{user.fullname.split(' ')[0]}</p>
         <p className='username text-xs font-semibold'>@ {user.username}</p>

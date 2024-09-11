@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Button from '../Button/Button'
+
 import CollapsLogo from '../../../assets/Logo/CollapsLogo'
 import DownIcon from '../../../assets/Logo/DownIcon'
-import BrandIcon from '../../../assets/Logo/BrandIcon'
+import brandImage from '../../../assets/Images/BrandImage.png'
 import LoginIcon from '../../../assets/Logo/LoginIcon'
 import Avatar from '../Avatar/Avatar'
 
 //temp
-import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
+// import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
 import DropdownProfile from '../DropdownProfile/DropdownProfile'
+import BrandLogo from '../../../assets/Logo/BrandLogo'
 
 export default function Navbar({mode}) {
-    const [collaps,setCollaps] = useState('uncollaps')
+    const [collaps,setCollaps] = useState('uncollaps');
     const [user,setUser] = useState(null);
     const [screenWidth,setScreenWidth] = useState(window.innerWidth);
     const [dropdownProfile,setDropdownProfile] = useState(false);
@@ -52,10 +53,9 @@ export default function Navbar({mode}) {
   return (
     <div className={`navbar px-6 py-3 lg:px-12 ${mode === 'dark' ? 'bg-[#191919]' : 'bg-[#ffffff]'}`}>
         <Link to={'/home'} className={`brand ${mode} flex items-center justify-left`}>
-            <BrandIcon className={`BrandIcon`}/>
-            <p className={`brandName text-${mode==='dark'?'white':'black'} text-xl font-bold mx-1`}>Scholar<span className='text-[#fff643]'>Guide</span></p>
+            <img src={brandImage} alt="" className='w-[8rem] md:w-[10rem]' />
         </Link>
-        <div className={`navContent ${collaps}`}>
+        <div className={`navContent ${collaps} px-4 lg:p-0`}>
         <div className="links">
             <ul>
                 <li><Link to={'/home'} className={`${mode=='dark'?'text-[#a4a4a4]':'text-[#191919]'}`}>Home</Link></li>
@@ -67,16 +67,17 @@ export default function Navbar({mode}) {
             {
                 user?
                 <>
-                 <Avatar img={img} dropdown={dropdownProfile}mode={mode}name={user.fullname.split(' ')[0]} username={user.username} onClick={()=>{toggleDropdownProfile()}}/>
-                 {dropdownProfile ? <DropdownProfile/>:<></>}
+                 <Avatar img={user.profile_url} dropdown={dropdownProfile}mode={mode}name={user.fullname.split(' ')[0]} username={user.username} onClick={()=>{toggleDropdownProfile()}}/>
+                 {dropdownProfile ? <DropdownProfile className='hidden lg:flex'/>:<></>}
                 </>
                 :
                 <>
-                <Button flex={true} varient={'outlined'} color={mode=='dark'?'lightbtn':'darkbtn'} className={'login'} onClick={()=>{navigate('/signin')}}>Sign In<LoginIcon/></Button>
-                <Button varient={'filled'} onClick={()=>{navigate('/signup')}}>Sign Up </Button>
+                <button className='w-[92%] lg:w-auto py-4 px-6 lg:py-2 lg:mx-1 lg:px-6 my-1 border border-black lg:border-[#656565] lg:hover:border-[#ffb300] rounded-md lg:rounded-[8px] bg-[#191919] lg:hover:bg-[#ffc53c3b] text-white text-[13px] lg:hover:text-[#ffb300] font-semibold transition-all duration-200 ease' onClick={()=>navigate('/signin')}>Sign in</button>
+                <button className='w-[92%] lg:w-auto py-4 px-6 lg:py-2 lg:mx-1 lg:px-10 my-1 border border-black lg:border-[#ffb300] rounded-md lg:rounded-[8px] bg-[#191919] lg:bg-[#ffb300] lg:hover:bg-[#ffc53c] text-white lg:text-[#191919] text-[13px] font-semibold transition-all duration-150 ease' onClick={()=>navigate('/signup')}>Sign up</button>
                 </>
-            
+                
             }
+        <hr className='w-full mt-6 bg-[#191919] opacity-40 lg:hidden'/>
             
         </div>
         </div>

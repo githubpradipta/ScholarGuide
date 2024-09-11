@@ -67,14 +67,14 @@ export default function Saves() {
                         <div className="saveBgImage lg:rounded-xl lg:h-[330px] lg:h-[340px] h-[324px] w-full lg:overflow-hidden">
                             <img className='w-full h-full lg:h-auto object-cover translate-y-0 lg:-translate-y-[80px] md:translate-y-[20px]' src={saveImage2} alt="" srcset="" />
                         </div>
-                        <div className="textArea w-full bg-white min-h-[60%] absolute lg:static top-[330px] lg:top-[450px] rounded-[28px] lg:mt-8 pt-16 pb-8 px-8 z-0">
-                            <div className="text flex flex-col justfy-start">
+                        <div className="textArea w-full bg-white min-h-[60%] absolute lg:static top-[330px] lg:top-[450px] rounded-[28px] lg:mt-8 pt-16 pb-8 px-3 z-0">
+                            <div className="text flex flex-col justfy-start px-4">
                                 <p className='text-3xl lg:text-4xl font-bold mb-2'>Thank God! you saved these before</p>
                                 <p className='text-md pr-4 font-bold mb-6 text-[#6e6e6e]'>now everything you need is right at your fingertips!</p>
                             </div>
 
                             <div className="cardList mt-6">
-                                <div className="cardheader flex items-center justify-between lg:mb-10 lg:px-6">
+                                <div className="cardheader flex items-center justify-between lg:mb-10 px-4 lg:px-6">
                                     <p className="text-2xl lg:text-3xl font-bold flex items-center">Saves <Save saveClass='inline w-6 h-6 ml-2' /> </p>
                                     <div className="deleteAll text-md font-bold px-2 py-1 text-blue-500 hover:bg-blue-100 rounded-2xl cursor-pointer" onClick={() => { deleteAllSaves() }}>Remove All</div>
                                 </div>

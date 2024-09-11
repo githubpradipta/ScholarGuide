@@ -17,12 +17,12 @@ To get started with Scholar_Guide, follow these steps:
 1. **Clone the Repository:**
 
    ```bash
-    git clone https://github.com/yourusername/Scholar_Guide.git
+    git clone https://github.com/yourusername/ScholarGuide.git
 
 2. **Clone the Repository:**
 
    ```bash
-    cd Scholar_Guide
+    cd ScholarGuide
 
 3. **Install Dependencies:**
 

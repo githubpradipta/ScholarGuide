@@ -49,7 +49,7 @@ export default function Notes() {
   return (
     <>
     <Navbar mode={'light'}/>
-    <div className='pt-20 flex flex-col justify-center items-center min-h-screen user-select-none'>
+    <div className='flex flex-col justify-center items-center min-h-screen user-select-none'>
       <div className="textBox text-center px-14 my-4">
         <div className="heading text-3xl lg:text-4xl font-bold lg:font-extrabold mb-4">TOPICS</div>
         <p classsName="mt-2 font-light text-2xl">Topics that turn <span className='font-bold'>"What’s that !??"</span>  into <span className='font-bold'>"I got this!"</span> , because pretending to know is half the battle!</p>
@@ -64,7 +64,7 @@ export default function Notes() {
                     <div className="overlay ml-4 flex-1 flex justify-between items-center">
                       <div className="text flex flex-col mr-3">
                         <div className="title text-md font-medium">{item.name}</div>
-                        <div className="desc text-xs mt-1">this is a short description for this topic</div>
+                        <div className="desc text-xs mt-1">{item.description}</div>
                       </div>
                         <button className='overlaybtn py-[7px] px-5 rounded-[2px] font-bold'
                         onClick={()=>{navigate(`/notes/${item._id}`)}}

@@ -14,6 +14,7 @@
     font-weight: 500;
     margin: 4px 0px;
     width: 100%;
+    transition: all .2s ease-in;
 }
 
 .contactForm input::placeholder,
@@ -27,6 +28,10 @@
 .contactForm textarea:focus{
     color: white;
     box-shadow: 0px 0px 3px 3px var(--primary-yello);
+}
+
+.contactForm textarea:focus{
+    height: 200px !important;
 }
 .contactForm button{
     width: 100px ;

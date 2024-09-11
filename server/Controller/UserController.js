@@ -4,11 +4,22 @@ const HttpError = require("standard-http-error")
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const secretKey = "nsdjeh83849"
+const {uploadOnCloudinary} = require('../Utility/cloudinary.js')
 
 
+const getUser = async(req,res,next) => {
+    const id = req.params.id;
 
+    try{
+        const user = await UserModel.findOne({_id:id});
+        return res.status(200).json(user);
+    }
+    catch(err){
+        next(new HttpError(500))
+    }
+}
 const registerUser = async(req,res,next)=>{
-    const { fullname, username, email, branch, year, password } = req.body;
+    const { fullname, username, email, department, year, password } = req.body;
     
     try{
         const DBuser = await UserModel.findOne({$or:[{username:username},{email:email}] })
@@ -22,7 +33,7 @@ const registerUser = async(req,res,next)=>{
             fullname,
             username,
             email,
-            branch,
+            department,
             year,
             password:hash
         })
@@ -38,6 +49,29 @@ const registerUser = async(req,res,next)=>{
     }
     
     
+}
+const editProfile = async(req,res,next)=>{
+    const updatedData = req.body;
+    const id = req.params.id;
+    
+    try{
+        const response = await uploadOnCloudinary(req.file.path);
+        updatedData.profile_url = response.secure_url;
+        
+        const updatedUser = await UserModel.findOneAndUpdate({_id:id},{$set:updatedData},{returnDocument:'after'});
+        return res.json({
+            message:"User details updated",
+            user:updatedUser
+        })
+    }
+    catch(err){
+        next(new HttpError(500,err));
+    }
+    
+    
+}
+const editProfileImage = async(req,res,next)=>{
+
 }
 
 const deleteOneSave = async(req,res,next)=>{
@@ -158,6 +192,7 @@ const logOut = (req,res,next)=>{
 }
 
 module.exports={
+    getUser,
     registerUser,
     loginUser,
     logOut,
@@ -165,4 +200,5 @@ module.exports={
     editUserSaves,
     deleteOneSave,
     deleteAllSaves,
+    editProfile,
 }
