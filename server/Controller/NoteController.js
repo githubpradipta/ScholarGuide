@@ -1,6 +1,6 @@
 const { NotesModel, NotesCategoryModel, UserModel } = require('../Model/DB');
 const HttpError = require("standard-http-error")
-
+const {uploadOnCloudinary} = require('../Utility/cloudinary');
 // ADmin access only
 const createNoteCategory = async(req,res,next)=>{
     const data = req.body;
@@ -13,6 +13,28 @@ const createNoteCategory = async(req,res,next)=>{
     }
     catch(err){
         return next(new HttpError(500));
+    }
+}
+const reviewNotes = async(req,res,next)=>{
+    const userId = req.params.id
+    const newNote = req.body;
+    const localFilePath = req.file.path;
+    
+    try {
+        const cluRes = await uploadOnCloudinary(localFilePath);
+        newNote.note_url = cluRes.secure_url
+        
+        const note = await NotesModel.create(newNote);
+        
+        const updatedUser = await UserModel.findOneAndUpdate({_id:userId},{$push:{notes: note._id}},{new:true});
+        
+        
+        res.status(200).json({
+            message:"Note send for approval",
+            user:updatedUser,
+        })  
+    } catch (err) {
+        return next(new HttpError(500,err))  
     }
 }
 
@@ -32,7 +54,7 @@ const getNotes = async (req,res,next)=>{
     
     try{
         const { name } = await NotesCategoryModel.findOne({_id:id})
-        const result = await(NotesModel.find({category:name}));
+        const result = await(NotesModel.find({category:name,status:1}));
         res.status(200).json(result);
     }
     catch(err){
@@ -70,24 +92,28 @@ const setNoteLikes = async(req,res,next)=>{
         return next(new HttpError(500));  
     }
 }
-const createNote = async(req,res,next)=>{
-    const data = req.body;
+const approveNote = async(req,res,next)=>{
+    const approvedNoteId = req.params.id;
 
-    try {
-        const result = await(NotesModel.create(data));
-        res.status(200).json({
-            message:"Note successfully uploaded"
+    try{
+        const result = await NotesModel.findOneAndUpdate({_is:approvedNoteId},{$set:{status:1}});
+        res.status(201).json({
+            message:"Note Recommended"
         })
-        
-    } catch (err) {
-        return next(new HttpError(500))  
     }
+    catch(err){
+        return next(new HttpError(500))
+    }
+    
+
+    
 }
 module.exports = {
     getNotes,
     getSavedNotes,
     setNoteLikes,
-    createNote,
+    approveNote,
     getCategories,
     createNoteCategory,
+    reviewNotes,
 }

@@ -147,7 +147,7 @@ export default function InnerNote() {
                                             <div key={item._id} className="Notecard w-[350px] px-4 py-2 rounded-md my-2 mx-2 cursor-pointer">
                                                 <img className='w-full mt-2 rounded-md h-[200px] object-cover' src={item.img_url} alt="" />
                                                 <div className="info mt-4 text-white">
-                                                    <div className="NoteTitle font-bold text-xl">{item.title}</div>
+                                                    <div className="NoteTitle font-bold text-xl">{item.notename}</div>
                                                     <div className="NoteDesc text-sm mt-2 mb-4 pr-8">{item.description}</div>
                                                     <div className="NoteAuther font-light cursor-text">- {item.author}</div>
                                                     <div className="NoteFooter mt-4 mb-3 w-full flex justify-between items-start">

@@ -19,7 +19,7 @@ const NotesSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    title:{
+    notename:{
         type:String,
         required:true,
     },
@@ -39,6 +39,14 @@ const NotesSchema = mongoose.Schema({
         type:String,
         default:"https://img.freepik.com/free-vector/post-it-collection-notes_1361-583.jpg?uid=R65903555&ga=GA1.1.364159305.1722171058&semt=ais_hybrid"
     },
+    note_url:{
+        type:String,
+        required:true,
+    },
+    status:{
+        type:Number,
+        default:0
+    }
 
 }) 
 const UserSchema = mongoose.Schema({
@@ -91,6 +99,10 @@ const UserSchema = mongoose.Schema({
     saves:{
         type:Array,
         default:[],
+    },
+    notes:{
+        type:Array,
+        default:[]
     },
     profile_url:{
         type:String,
