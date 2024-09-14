@@ -61,6 +61,7 @@ export default function Navbar({mode}) {
                 <li><Link to={'/home'} className={`${mode=='dark'?'text-[#a4a4a4]':'text-[#191919]'}`}>Home</Link></li>
                 <li><Link to={'/notes'} className={`${mode=='dark'?'text-[#a4a4a4]':'text-[#191919]'}`}>Notes</Link></li>
                 <li><Link to={'/upload'} className={`${mode=='dark'?'text-[#a4a4a4]':'text-[#191919]'}`}>Upload</Link></li>
+                <li><Link to={'/review'} className={`${mode=='dark'?'text-[#a4a4a4]':'text-[#191919]'} hidden`}>Review</Link></li>
             </ul>
         </div>
         <div className="right flex items-center justify-center w-full">

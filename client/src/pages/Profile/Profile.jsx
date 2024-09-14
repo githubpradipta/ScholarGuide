@@ -25,6 +25,9 @@ export default function Profile() {
     const navigate = useNavigate()
 
     useEffect(()=>{
+        const token = localStorage.getItem('auth');
+        if(!token) return navigate('/signin')
+
         const user = localStorage.getItem('user');
         setUser(JSON.parse(user));
       },[])    
@@ -133,7 +136,7 @@ export default function Profile() {
                         <div className="title w-full"><span className='text-[#656565] font-semibold lg:text-xl text-sm '>Dashboard</span></div>
 
                         <ul className="dashboardList mt-4 w-full flex flex-col lg:grid lg:grid-cols-2 lg:place-items-center">
-                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={() => { navigate('/saves') }}>
+                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={() => { navigate('/profile/saves') }}>
                                 <div className="left flex justify-center items-center gap-2">
                                     <div className="icon"><Unsave /></div>
                                     <div className="text font-semibold text-[18px] text-[#191919]">My Saves</div>
@@ -142,7 +145,7 @@ export default function Profile() {
                                     <div className="icon"><RightArrow2 /></div>
                                 </div>
                             </li>
-                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer">
+                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={() => { navigate('/profile/myuploads') }}>
                                 <div className="left flex justify-center items-center gap-2">
                                     <div className="icon"><UploadIcon /></div>
                                     <div className="text font-semibold text-[18px] text-[#191919]">My Uploads</div>

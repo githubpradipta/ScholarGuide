@@ -1,7 +1,10 @@
 const { NotesModel, NotesCategoryModel, UserModel } = require('../Model/DB');
+const mongoose = require('mongoose');
 const HttpError = require("standard-http-error")
 const {uploadOnCloudinary} = require('../Utility/cloudinary');
-// ADmin access only
+
+
+// Admin access only
 const createNoteCategory = async(req,res,next)=>{
     const data = req.body;
     
@@ -98,7 +101,7 @@ const approveNote = async(req,res,next)=>{
     try{
         const result = await NotesModel.findOneAndUpdate({_is:approvedNoteId},{$set:{status:1}});
         res.status(201).json({
-            message:"Note Recommended"
+            message:"Note Approved"
         })
     }
     catch(err){
@@ -108,6 +111,44 @@ const approveNote = async(req,res,next)=>{
 
     
 }
+const getUploadedNotes = async(req,res,next)=>{
+    const userId = req.params.id;
+
+    try{
+        const { notes } = await UserModel.findOne({_id:userId})
+        const uploadedNotes = await NotesModel.find({_id:{$in: notes}})
+
+        res.status(200).json({
+            message:'Success',
+            notes: uploadedNotes,
+        });
+        
+    }
+    catch(err){
+        return next(new HttpError(500));
+    }
+}
+const deleteNote = async(req,res,next)=>{
+    const noteId = new mongoose.Types.ObjectId(req.params.id);
+    const userId = req.body.userid;
+    console.log(noteId);
+
+    try{
+        const user = await UserModel.findOneAndUpdate({_id:userId},{ $pull:{notes:noteId}},{new:true});
+        const result = await NotesModel.deleteOne({_id:noteId});
+        console.log(user);
+        
+        res.status(200).json({
+            message: "Note permanently deleted",
+            user:user,
+        })
+
+    } 
+    catch (err) {
+        return next(new HttpError(500));
+    }
+}
+
 module.exports = {
     getNotes,
     getSavedNotes,
@@ -116,4 +157,6 @@ module.exports = {
     getCategories,
     createNoteCategory,
     reviewNotes,
+    getUploadedNotes,
+    deleteNote,
 }

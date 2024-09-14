@@ -13,6 +13,7 @@ import EditProfile from './pages/EditProfile/EditProfile'
 import ImageUpload from './pages/ImageUpload/ImageUpload'
 import Upload from './pages/Upload/Upload'
 import MyUploads from './pages/MyUploads/MyUploads'
+import Review from './pages/Review/Review'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,9 +32,10 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/notes' element={<Notes/>}/>
-      <Route path='/saves' element={<Saves/>}/>
+      <Route path='/review' element={<Review/>}/>
+      <Route path='/profile/saves' element={<Saves/>}/>
       <Route path='/upload' element={<Upload/>}/>
-      <Route path='profile/myuploads' element={<MyUploads/>}/>
+      <Route path='/profile/myuploads' element={<MyUploads/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/profile/edit' element={<EditProfile/>}/>
       <Route path='/profile/edit/upload' element={<ImageUpload/>}/>

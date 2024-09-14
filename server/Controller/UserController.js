@@ -7,6 +7,7 @@ const secretKey = "nsdjeh83849"
 const {uploadOnCloudinary} = require('../Utility/cloudinary.js')
 
 
+
 const DemoApi = async(req,res,next)=>{
     console.log(req.file);
     res.json({
@@ -93,7 +94,6 @@ const editProfileImage = async(req,res,next)=>{
     }
 
 }
-
 const deleteOneSave = async(req,res,next)=>{
     const userID = req.params.uid;
     const noteID = req.body.noteid;

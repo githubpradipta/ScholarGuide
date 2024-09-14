@@ -38,6 +38,8 @@ export default function Saves() {
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('auth'))
+        if(!token) return navigate('/signin')
+            
         axios.get(`http://localhost:8000/notes/saves/${user._id}`, {
             headers: {
                 Authorization: `Bearer ${token}`

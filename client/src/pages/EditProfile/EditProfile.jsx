@@ -26,11 +26,16 @@ export default function EditProfile() {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useState({});
     const [fadeClass, setFadeClass] = useState('fade-in');
-    const user = JSON.parse(localStorage.getItem('user'));
 
     useEffect(() => {
+        const token = localStorage.getItem('auth');
+        if(!token) return navigate('/signin')
+
+        setUser(JSON.parse(localStorage.getItem('user')));
         const user_id = user._id;
+        
         setFadeClass('fade-in');
         setLoading(true);
 
@@ -38,7 +43,11 @@ export default function EditProfile() {
         const delay = new Promise((resolve) => setTimeout(resolve, 1500));
 
         Promise.all([
-            axios.get(`http://localhost:8000/user/getuser/${user_id}`),
+            axios.get(`http://localhost:8000/user/getuser/${user_id}`,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }),
             delay
         ])
             .then(([res]) => {

@@ -20,6 +20,9 @@ export default function Upload() {
     })
 
     useEffect(()=>{
+        const auth = localStorage.getItem('auth');
+        if(!auth) navigate('/signin')
+            
         setUser(JSON.parse(localStorage.getItem('user')));
     },[])
 

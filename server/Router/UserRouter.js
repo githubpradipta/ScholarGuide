@@ -3,7 +3,8 @@ const router = express.Router();
 const { registerUser, loginUser, logOut, editUserLikes, editUserSaves, deleteOneSave, deleteAllSaves, editProfile, editProfileImage, getUser, DemoApi } = require('../Controller/UserController.js')
 const {upload} = require('../Middleware/multer.js')
 router
-.get('/getuser/:id',getUser)
+
+
 .post('/signup',registerUser)
 .post('/signin',loginUser)
 .post('/logout',logOut)
