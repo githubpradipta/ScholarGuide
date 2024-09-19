@@ -4,7 +4,7 @@ const { google } = require('googleapis')
 // const apikeys = require('./googleDriveApi.json')
 const private_key = process.env.Drive_PrivateKey;
 const client_email = process.env.Drive_email;
-console.log(client_email);
+
 
 
 const SCOPE = ["https://www.googleapis.com/auth/drive"];
