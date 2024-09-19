@@ -87,7 +87,7 @@ export default function Saves() {
                                             <div className="card flex justify-between items-center my-6 px-4 py-4 rounded-xl">
                                                 <div className="saveCardText">
                                                     <div className="category px-2 py-1 rounded-xl text-xs md:text-sm">{item.category}</div>
-                                                    <div className="title font-semibold text-sm md:text-md lg:text-xl mt-1 pr-2">{item.title}</div>
+                                                    <div className="title font-semibold text-sm md:text-md lg:text-xl mt-1 pr-2">{item.notename}</div>
                                                     <div className="author mt-4 text-xs flex items-center">
                                                         <span className='mr-2'>{item.author}</span>
                                                         <span className='mr-2 font-extralight'>|</span>

@@ -43,9 +43,17 @@ const NotesSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    noteDownload_url:{
+        type:String,
+        required:true,
+    },
     status:{
         type:Number,
         default:0
+    },
+    publishDate:{
+        type:Date,
+        default:Date.now
     }
 
 }) 

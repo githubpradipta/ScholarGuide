@@ -29,55 +29,55 @@ export default function EditProfile() {
     const [user, setUser] = useState({});
     const [fadeClass, setFadeClass] = useState('fade-in');
 
-    useEffect(() => {
-        const token = localStorage.getItem('auth');
-        if(!token) return navigate('/signin')
-
-        setUser(JSON.parse(localStorage.getItem('user')));
-        const user_id = user._id;
-        
-        setFadeClass('fade-in');
-        setLoading(true);
-
-
-        const delay = new Promise((resolve) => setTimeout(resolve, 1500));
-
-        Promise.all([
-            axios.get(`http://localhost:8000/user/getuser/${user_id}`,{
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }),
-            delay
-        ])
-            .then(([res]) => {
-                const user = res.data;
-                localStorage.setItem('user', JSON.stringify(user))
-            })
-            .catch((err) => {
-                console.log(err);
-
-            })
-            .finally(() => {
-                setFadeClass('fade-out');
-                setLoading(false);
-            })
-    }, [])
-
-
     const [editData, setEditData] = useState({
-        fullname: user.fullname ? user.fullname : "",
-        gender: user.gender ? user.gender : "",
-        email: user.email ? user.email : "",
-        username: user.username ? user.username : "",
-        contact: user.contact ? user.contact : "",
-        year: user.year ? user.year : "",
-        department: user.department ? user.department : "",
-        university: user.university ? user.university : "",
-        address: user.address ? user.address : "",
-        state: user.state ? user.state : "",
-        city: user.city ? user.city : "",
-    })
+        fullname: "",
+        gender: "",
+        email: "",
+        username: "",
+        contact: "",
+        year: "",
+        department: "",
+        university: "",
+        address: "",
+        state: "",
+        city: "",
+      });
+    
+      useEffect(() => {
+        const token = localStorage.getItem('auth');
+        if (!token) {
+          navigate('/signin');
+          return;
+        }
+    
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+          setUser(user);
+        }
+      }, [navigate]);
+    
+      useEffect(() => {
+        if (user) {
+          setEditData({
+            fullname: user.fullname || "",
+            gender: user.gender || "",
+            email: user.email || "",
+            username: user.username || "",
+            contact: user.contact || "",
+            year: user.year || "",
+            department: user.department || "",
+            university: user.university || "",
+            address: user.address || "",
+            state: user.state || "",
+            city: user.city || "",
+          });
+        }
+      }, [user]);
+    
+    
+
+    
+
     const getData = (e) => {
         const { name, value } = e.target;
 
@@ -155,18 +155,18 @@ export default function EditProfile() {
                     <>
                         {/* header */}
                         <div className="header text-white px-2 my-4 mt-4 flex justify-between items-center w-full">
-                            <div className="backbtn flex items-center cursor-pointer" onClick={() => { navigate(-1) }}>
+                            <div className="backbtn flex items-center cursor-pointer lg:hidden" onClick={() => { navigate(-1) }}>
                                 <div className="backIcon" ><LeftArrow /></div>
                                 <div className="text-xl font-medium">Back</div>
                             </div>
 
                             <div className="profileHeading flex-1 text-center text-2xl lg:text-3xl font-bold" onClick={()=>{setIsModalOpen(true)}}>Profile</div>
-                            <div className="submitbtn text-xl font-semibold text-orange-400 cursor-pointer" onClick={submitData}>Confirm</div>
+                            <div className="submitbtn text-xl font-semibold text-orange-400 cursor-pointer lg:hidden" onClick={submitData}>Confirm</div>
                         </div>
 
                         {/* ProfileTop */}
                         <div className="profileTop text-white flex flex-col items-center my-10">
-                            <div className="profilePic my-4 w-[120px] h-[120px] lg:w-[70px] lg:h-[70px] rounded-[50%]">
+                            <div className="profilePic my-4 w-[120px] h-[120px] lg:w-[150px] lg:h-[150px] rounded-[50%]">
                                 <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="image" srcset="" />
                             </div>
                             <div className="name text-2xl font-bold ">{user.fullname}</div>

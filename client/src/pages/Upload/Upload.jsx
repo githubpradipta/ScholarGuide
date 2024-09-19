@@ -19,14 +19,14 @@ export default function Upload() {
         description: "",
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         const auth = localStorage.getItem('auth');
-        if(!auth) navigate('/signin')
-            
-        setUser(JSON.parse(localStorage.getItem('user')));
-    },[])
+        if (!auth) navigate('/signin')
 
-    
+        setUser(JSON.parse(localStorage.getItem('user')));
+    }, [uploadStatus])
+
+
 
     const handleFile = (event) => {
         const file = event.target.files[0];
@@ -46,7 +46,7 @@ export default function Upload() {
             ...errors, [name]: ''
         })
 
-        
+
     }
     const submitForm = (e) => {
         e.preventDefault();
@@ -89,8 +89,7 @@ export default function Upload() {
             form.append('file', file);
 
             setUploadStatus(true);
-            console.log(user._id);
-            
+
             axios.post(`http://localhost:8000/admin/notes/review/${user._id}`, form, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -102,15 +101,16 @@ export default function Upload() {
                     setUploadStatus(false);
 
                     Swal.fire({
-                        title:res.data.message,
-                        icon:'success',
+                        title: res.data.message,
+                        icon: 'success',
                         confirmButtonText: "Check Status",
                     })
-                    .then((res)=>{
-                        if(res.isConfirmed) navigate('/profile/myuploads')
-                    })
+                    .then((res) => {
+                            if (res.isConfirmed) navigate('/profile/myuploads')
+                        })
 
-                    setUser(localStorage.setItem('user',JSON.stringify(res.data.user)))
+                    setUser(localStorage.setItem('user', JSON.stringify(res.data.user)))
+                    setFile(null);
                 })
                 .catch(err => {
                     console.log(err);
@@ -119,7 +119,7 @@ export default function Upload() {
         }
 
     }
-    
+
 
 
     return (
@@ -163,7 +163,7 @@ export default function Upload() {
                                             placeholder="Name of the note"
                                             onChange={handleInput}
                                         />
-                                        {errors.notename && <small className="text-start"style={{ color: 'red' }}>{errors.notename}</small>}
+                                        {errors.notename && <small className="text-start" style={{ color: 'red' }}>{errors.notename}</small>}
                                     </div>
 
                                     {/* Author Field */}

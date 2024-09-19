@@ -2,6 +2,7 @@ const { NotesModel, NotesCategoryModel, UserModel } = require('../Model/DB');
 const mongoose = require('mongoose');
 const HttpError = require("standard-http-error")
 const {uploadOnCloudinary} = require('../Utility/cloudinary');
+const { Drive_authorize, Drive_uploadFile } = require('../Utility/googleDrive')
 
 
 // Admin access only
@@ -15,7 +16,7 @@ const createNoteCategory = async(req,res,next)=>{
         })
     }
     catch(err){
-        return next(new HttpError(500));
+        return next(new HttpError(500,err));
     }
 }
 const reviewNotes = async(req,res,next)=>{
@@ -23,9 +24,14 @@ const reviewNotes = async(req,res,next)=>{
     const newNote = req.body;
     const localFilePath = req.file.path;
     
+    
     try {
-        const cluRes = await uploadOnCloudinary(localFilePath);
-        newNote.note_url = cluRes.secure_url
+        
+        const creadintial = await Drive_authorize();
+        const drive = await Drive_uploadFile(creadintial,localFilePath);
+        
+        newNote.note_url = drive.webViewLink;
+        newNote.noteDownload_url = drive.webContentLink;
         
         const note = await NotesModel.create(newNote);
         
@@ -49,6 +55,26 @@ const getCategories = async(req,res,next)=>{
     }
     catch(err){
         return next(new HttpError(500));
+    }
+}
+const getPendingNotes = async (req,res,next)=>{
+    
+    try{
+        const result = await NotesModel.find({status:0});
+        
+        res.status(200).json(result);
+    }
+    catch(err){
+        next(HttpError(500,err.message))
+    }
+}
+const getAllNotes = async (req,res,next)=>{
+    try{
+        const result = await(NotesModel.find({status:1}));
+        res.status(200).json(result);
+    }
+    catch(err){
+        next(HttpError(500,err.message))
     }
 }
 const getNotes = async (req,res,next)=>{
@@ -96,10 +122,10 @@ const setNoteLikes = async(req,res,next)=>{
     }
 }
 const approveNote = async(req,res,next)=>{
-    const approvedNoteId = req.params.id;
-
+    const approvedNoteId = new mongoose.Types.ObjectId(req.params.id);
     try{
-        const result = await NotesModel.findOneAndUpdate({_is:approvedNoteId},{$set:{status:1}});
+        const result = await NotesModel.findOneAndUpdate({_id:approvedNoteId},{$set:{status:1}},{new: true});
+        
         res.status(201).json({
             message:"Note Approved"
         })
@@ -131,12 +157,10 @@ const getUploadedNotes = async(req,res,next)=>{
 const deleteNote = async(req,res,next)=>{
     const noteId = new mongoose.Types.ObjectId(req.params.id);
     const userId = req.body.userid;
-    console.log(noteId);
 
     try{
         const user = await UserModel.findOneAndUpdate({_id:userId},{ $pull:{notes:noteId}},{new:true});
         const result = await NotesModel.deleteOne({_id:noteId});
-        console.log(user);
         
         res.status(200).json({
             message: "Note permanently deleted",
@@ -151,6 +175,7 @@ const deleteNote = async(req,res,next)=>{
 
 module.exports = {
     getNotes,
+    getAllNotes,
     getSavedNotes,
     setNoteLikes,
     approveNote,
@@ -159,4 +184,5 @@ module.exports = {
     reviewNotes,
     getUploadedNotes,
     deleteNote,
+    getPendingNotes
 }

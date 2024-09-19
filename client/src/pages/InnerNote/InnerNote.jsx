@@ -6,8 +6,9 @@ import LoveOutlined from '../../assets/Logo/LoveOutlined';
 import Unsave from '../../assets/Logo/Unsave';
 import Save from '../../assets/Logo/Save';
 import Navbar from '../../components/my_ui/Navbar/Navbar';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import LinkIcon from '../../assets/Logo/LinkIcon';
 
 export default function InnerNote() {
     const { categoryID } = useParams();
@@ -16,6 +17,7 @@ export default function InnerNote() {
     const [save, setSave] = useState(false);
     const [data, setData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'))
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
     // const [data,setData] = useState([
 
     //     {
@@ -64,41 +66,41 @@ export default function InnerNote() {
         const userLikes = user.likeNotes;
         const isLike = userLikes.includes(note._id);
 
-        
-        const newLikes = isLike? note.likesCount-1 : note.likesCount+1;
-        console.log(newLikes,isLike);
-        
-        
-        axios.post('http://localhost:8000/user/updateLikes',{id:user._id,LikeElement:note._id,status:isLike})
-        .then((res)=>{
-            localStorage.setItem('user',JSON.stringify(res.data))
-        })
-        .catch((err)=>{
-            console.log(err);
-            
-        })
-        console.log(user,isLike);
-        
-        axios.post(`http://localhost:8000/notes/like/${note._id}`,{newLikes})
-        .catch((err)=>{
-            console.log(err);
-            
-        })
-        
-        
+
+        const newLikes = isLike ? note.likesCount - 1 : note.likesCount + 1;
+        console.log(newLikes, isLike);
+
+
+        axios.post('http://localhost:8000/user/updateLikes', { id: user._id, LikeElement: note._id, status: isLike })
+            .then((res) => {
+                localStorage.setItem('user', JSON.stringify(res.data))
+            })
+            .catch((err) => {
+                console.log(err);
+
+            })
+        console.log(user, isLike);
+
+        axios.post(`http://localhost:8000/notes/like/${note._id}`, { newLikes })
+            .catch((err) => {
+                console.log(err);
+
+            })
+
+
     }
     const toggleSave = (note) => {
         const noteID = note._id;
         const isSave = user.saves.includes(noteID);
         //api call
-        axios.post('http://localhost:8000/user/updateSaves',{id:user._id,SaveElement:noteID,status:isSave})
-        .then((res)=>{
-            localStorage.setItem('user',JSON.stringify(res.data))
-        })
-        .catch((err)=>{
-            console.log(err);
-            
-        })
+        axios.post('http://localhost:8000/user/updateSaves', { id: user._id, SaveElement: noteID, status: isSave })
+            .then((res) => {
+                localStorage.setItem('user', JSON.stringify(res.data))
+            })
+            .catch((err) => {
+                console.log(err);
+
+            })
 
     }
 
@@ -120,10 +122,11 @@ export default function InnerNote() {
 
     }, [toggleLike])
 
+
     return (
         <>
             <Navbar mode={'light'} />
-            <div className={`InnerNoteBody flex flex-col justify-center items-center w-screen min-h-screen py-10 lg:pt-16 ${data.length==0 ? 'h-screen':''}`}>
+            <div className={`InnerNoteBody flex flex-col justify-center items-center w-screen min-h-screen py-10 lg:pt-16 ${data.length == 0 ? 'h-screen' : ''}`}>
                 {
                     data.length == 0 ?
                         <>
@@ -144,22 +147,28 @@ export default function InnerNote() {
                                 {
                                     data.map((item) => {
                                         return (
-                                            <div key={item._id} className="Notecard w-[350px] px-4 py-2 rounded-md my-2 mx-2 cursor-pointer">
+                                            <div key={item._id} className="Notecard bg-slate-900 w-[350px] px-4 py-2 rounded-md my-2 mx-2">
                                                 <img className='w-full mt-2 rounded-md h-[200px] object-cover' src={item.img_url} alt="" />
                                                 <div className="info mt-4 text-white">
-                                                    <div className="NoteTitle font-bold text-xl">{item.notename}</div>
-                                                    <div className="NoteDesc text-sm mt-2 mb-4 pr-8">{item.description}</div>
-                                                    <div className="NoteAuther font-light cursor-text">- {item.author}</div>
+                                                    <div className="NoteTitle font-bold text-xl flex items-center gap-2">{item.notename} <Link to={item.note_url} target='_blank'><LinkIcon/></Link></div>
+                                                    <div className="NoteDesc text-xs  mt-2 mb-4 pr-8">{item.description}</div>
+
+                                                    <div className="createDetails text-sm flex justify-between items-center">
+                                                        <div className="NoteAuther text-xs font-light bg-gray-600 px-1 py-0.5 rounded-sm inline-block cursor-text">~ {item.author}</div>
+                                                        <div className="date text-slate-400 font-semibold">Created &nbsp; &nbsp;<span className='text-slate-100 font-normal'>{new Date(item.publishDate).toLocaleDateString('en-GB',options)}</span></div>
+                                                    </div>
+
                                                     <div className="NoteFooter mt-4 mb-3 w-full flex justify-between items-start">
                                                         <div className="NotefooterLeft flex justify-center items-center">
                                                             <div className="like cursor-pointer" onClick={() => { toggleLike(item) }} >{user.likeNotes.includes(item._id) ? <LoveSolid /> : <LoveOutlined />}</div>
                                                             <div className="likecount font-light text-md ml-1">{item.likesCount}</div>
                                                         </div>
                                                         <div className="NotefooterRight">
-                                                            <div className="save cursor-pointer" onClick={()=>{toggleSave(item)}}>{user.saves.includes(item._id) ? <Save /> : <Unsave />}</div>
+                                                            <div className="save cursor-pointer" onClick={() => { toggleSave(item) }}>{user.saves.includes(item._id) ? <Save /> : <Unsave />}</div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         )
                                     })

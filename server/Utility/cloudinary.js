@@ -2,19 +2,24 @@ const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 const HttpError = require("standard-http-error")
 
+
 cloudinary.config({ 
-    cloud_name: 'dlhflzvyz', 
-    api_key: '523281526242656', 
-    api_secret: 'UpqrK20XYK_aEEYlx7Kir59K1EI' 
+    cloud_name: process.env.cloudinary_cloud_name, 
+    api_key: process.envcloudinary_api_key, 
+    api_secret: process.env.cloudinary_api_secret, 
 });
 
+
+
 const uploadOnCloudinary = async(localFilePath)=>{
+    console.log(localFilePath);
+    
     try{
         const response = await cloudinary.uploader.upload
         (
-        localFilePath,{
-            resource_type:'auto'
-        })
+        localFilePath,
+        {resource_type:'raw'}
+        )
         fs.unlinkSync(localFilePath);
         return response;
     }
@@ -22,6 +27,7 @@ const uploadOnCloudinary = async(localFilePath)=>{
         fs.unlinkSync(localFilePath);
         return new HttpError(500);
     }
+ 
     
 }
 

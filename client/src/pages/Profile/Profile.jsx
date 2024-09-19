@@ -97,25 +97,25 @@ export default function Profile() {
                     <hr className=' mx-4 hidden lg:block' />
 
                     <div className="otherInfo px-6 my-8 hidden lg:block ">
-                        <div className="mainInfo flex flex-col gap-4 text-[#a4a4a4]">
+                        <div className={`mainInfo flex flex-col gap-4 text-[#a4a4a4] ${user.email? '':'hidden'}`}>
                             <div className="email flex justify-start items-center">
                                 <div className="icon text-md font-bold w-6 h-6"><GmailIcon color='#a4a4a4'/></div>
                                 <div className="value text-sm ml-3 flex-1">{user.email}</div>
                             </div>
 
-                            <div className="address flex justify-start items-center">
+                            <div className={`address flex justify-start items-center ${user.address?"":"hidden"}`}>
                                 <div className="icon text-md font-bold w-6 h-6"><LocationIcon color='#a4a4a4'/></div>
-                                <div className="value text-sm ml-3 flex-1">302 Ramkrishna Road, New Barrackpur, Kolkata-700131</div>
+                                <div className="value text-sm ml-3 flex-1">{user.address}</div>
                             </div>
 
-                            <div className="college flex justify-start items-start  items-center">
+                            <div className="college flex justify-start items-start items-center">
                                 <div className="name text-md font-bold w-6 h-6"><CollegeIcon color='#a4a4a4'/></div>
                                 <div className="value text-sm ml-3 flex-1">4th</div>
                             </div>
 
                             <div className="dept flex justify-start items-center">
                                 <div className="icon text-md font-bold w-6 h-6"><StarIcon color='#a4a4a4'/></div>
-                                <div className="value text-sm ml-3 flex-1">{user.branch}</div>
+                                <div className="value text-sm ml-3 flex-1">{user.department}</div>
                             </div>
 
                         </div>

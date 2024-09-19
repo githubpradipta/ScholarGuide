@@ -1,16 +1,17 @@
-.Notecard{
-    background-color: rgb(38, 37, 43);
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+.NoteTitle svg{
+    width: 20px;
+    height: 20px;
+    opacity: 50%;
+
+    transition: all .2s ease;
+
+    &:hover{
+        opacity: 100%;
+    }
 }
 .Notecard img{
     transition: all .2s ease;
 }
 .Notecard:hover img{
     transform: scale(102%);
-}
-.NoteAuther{
-    background-color: rgb(56, 56, 56);
-    display: inline;
-    padding: 3px 6px;
-    border-radius: 5px;
 }
