@@ -154,7 +154,7 @@ export default function Profile() {
                                     <div className="icon"><RightArrow2 /></div>
                                 </div>
                             </li>
-                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer">
+                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={()=>{navigate('/forget-password')}}>
                                 <div className="left flex justify-center items-center gap-2">
                                     <div className="icon"><LockIcon /></div>
                                     <div className="text font-semibold text-[18px] text-[#191919]">Change Password</div>

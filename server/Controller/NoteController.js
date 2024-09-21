@@ -5,6 +5,7 @@ const {uploadOnCloudinary} = require('../Utility/cloudinary');
 const { Drive_authorize, Drive_uploadFile } = require('../Utility/googleDrive')
 
 
+
 // Admin access only
 const createNoteCategory = async(req,res,next)=>{
     const data = req.body;
@@ -173,6 +174,7 @@ const deleteNote = async(req,res,next)=>{
     }
 }
 
+
 module.exports = {
     getNotes,
     getAllNotes,
@@ -184,5 +186,5 @@ module.exports = {
     reviewNotes,
     getUploadedNotes,
     deleteNote,
-    getPendingNotes
+    getPendingNotes,
 }

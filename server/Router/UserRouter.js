@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser, logOut, editUserLikes, editUserSaves, deleteOneSave, deleteAllSaves, editProfile, editProfileImage, getUser, DemoApi } = require('../Controller/UserController.js')
+const { registerUser, loginUser, logOut, editUserLikes, editUserSaves, deleteOneSave, deleteAllSaves, editProfile, editProfileImage, forgetPassword, verifyOTP, DemoApi } = require('../Controller/UserController.js')
 const {upload} = require('../Middleware/multer.js')
 router
 
@@ -8,6 +8,8 @@ router
 .post('/signup',registerUser)
 .post('/signin',loginUser)
 .post('/logout',logOut)
+.post('/forget-password',forgetPassword)
+.post('/reset-password',verifyOTP)
 .post('/editprofile/:id',editProfile)
 .post('/editprofileimage/:id',upload.single('file'),editProfileImage)
 .post('/updateLikes',editUserLikes)

@@ -20,7 +20,6 @@ app.use('/admin',AdminRoutes);
 app.use('/user',UserRoutes);
 
 app.use((err,req,res,next)=>{
-    console.log("Error :",err);
     err.code = err.code || 500;
     res.status(err.code).json({
         status:err.code,

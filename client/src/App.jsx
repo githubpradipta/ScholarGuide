@@ -14,6 +14,8 @@ import ImageUpload from './pages/ImageUpload/ImageUpload'
 import Upload from './pages/Upload/Upload'
 import MyUploads from './pages/MyUploads/MyUploads'
 import Review from './pages/Review/Review'
+import ForgetPassword from './pages/ForgetPassword/ForgetPassword'
+import ResetPassword from './pages/ResetPassword/ResetPassword'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,6 +36,8 @@ function App() {
       <Route path='/notes' element={<Notes/>}/>
       <Route path='/review/:status' element={<Review/>}/>
       <Route path='/profile/saves' element={<Saves/>}/>
+      <Route path='/forget-password' element={<ForgetPassword/>}/>
+      <Route path='/profile/reset-password' element={<ResetPassword/>}/>
       <Route path='/upload' element={<Upload/>}/>
       <Route path='/profile/myuploads' element={<MyUploads/>}/>
       <Route path='/profile' element={<Profile/>}/>
