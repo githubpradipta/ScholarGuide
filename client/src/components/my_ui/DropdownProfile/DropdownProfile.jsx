@@ -44,7 +44,7 @@ export default function DropdownProfile({className}) {
       <hr/>
       <ul className="flex flex-col items-start">
         <li className='w-full px-4 py-1 hover:bg-[#aeaeae] cursor-pointer' onClick={()=>{navigate('/profile')}}><Link className='font-normal' >Profile</Link></li>
-        <li className='w-full px-4 py-1 hover:bg-[#aeaeae] cursor-pointer' onClick={()=>{navigate('profile/saves')}}><Link className='font-normal' >Saves</Link></li>
+        <li className='w-full px-4 py-1 hover:bg-[#aeaeae] cursor-pointer' onClick={()=>{navigate('/profile/saves')}}><Link className='font-normal' >Saves</Link></li>
         <hr />
         <li className='w-full px-2 pt-1'><Link className={`font-bold ${css.logoutBtn}`}onClick={()=>{logOut()}} >Logout</Link></li>
       </ul>

@@ -66,7 +66,7 @@ export default function Home() {
             <span className='text-7xl font-extrabold'>Notes</span>
             <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block bg-[#ffc53c92] text-[#ffc53c] mx-2 px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
             <div className="headBtn mt-7">
-              <button class="mt-14 py-1 flex justify-center items-center text-sm text-white hover:text-white lg:py-1.5 px-6 bg-[#292929] rounded-3xl border border-white hover:border-[#ffb300] transition-all duration-500 ease glowing-btn" onClick={() => { logOut() }}>
+              <button class="mt-14 py-1 flex justify-center items-center text-sm text-white hover:text-white lg:py-1.5 px-6 bg-[#292929] rounded-3xl border border-white hover:border-[#ffb300] transition-all duration-500 ease glowing-btn" onClick={() => { navigate('/notes')}}>
                 Try it now 🎉
                 <div class="flex justify-center items-center w-6 h-6 ml-1">
                   <RightArrow />

@@ -29,7 +29,7 @@ const reviewNotes = async(req,res,next)=>{
     try {
         
         const creadintial = await Drive_authorize();
-        const drive = await Drive_uploadFile(creadintial,localFilePath);
+        const drive = await Drive_uploadFile(creadintial,localFilePath,newNote.notename);
         
         newNote.note_url = drive.webViewLink;
         newNote.noteDownload_url = drive.webContentLink;

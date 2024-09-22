@@ -83,7 +83,6 @@ const editProfileImage = async (req, res, next) => {
 
     try {
         const response = await uploadOnCloudinary(req.file.path);
-
         const img_url = response.secure_url;
 
         const updatedUser = await UserModel.findOneAndUpdate({ _id: id }, { $set: { profile_url: img_url } }, { returnDocument: 'after' });

@@ -100,7 +100,7 @@ export default function Login() {
                     </div>
                     <p className='text-xs text-[#FF0F15]'>{formErrors.password}</p>
 
-                    <div className="forgetBox w-full flex justify-start mt-4">
+                    <div className="forgetBox w-full flex justify-start mt-4" onClick={()=>{navigate('/forget-password')}}>
                         <p className="forgetPass text-xs font-bold ml-14 cursor-pointer">Forget Password?</p>
                     </div>
 

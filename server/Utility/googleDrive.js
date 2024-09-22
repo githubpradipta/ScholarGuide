@@ -1,33 +1,37 @@
 const fs = require('fs')
 const { google } = require('googleapis')
 
-// const apikeys = require('./googleDriveApi.json')
-const private_key = process.env.Drive_PrivateKey;
+const private_key =  process.env.Drive_PrivateKey;
 const client_email = process.env.Drive_email;
 
 
 
 const SCOPE = ["https://www.googleapis.com/auth/drive"];
 
+
 async function Drive_authorize(){
-    const jwtClient = new google.auth.JWT(
+  try
+    {const jwtClient = new google.auth.JWT(
         client_email,
         null,
-        private_key,
+        private_key.replace(/\\n/g, '\n'),
         SCOPE
     )
 
     await jwtClient.authorize();
 
-    return jwtClient;
+    return jwtClient;}
+    catch(err){
+      console.log("err here");
+      
+    }
 }
-
-const Drive_uploadFile = async (authClient,localFilePath) => {
+const Drive_uploadFile = async (authClient,localFilePath,filename) => {
   
     const drive = google.drive({ version: 'v3', auth: authClient });
   
     const fileMetadata = {
-      name: "example.pdf", // Name of the file in Drive
+      name: filename, // Name of the file in Drive
       parents: ["1vdt04DE7ZCi1jq84QCGDaM4e2SYY6UOW"] // Folder ID in Drive
     };
   
