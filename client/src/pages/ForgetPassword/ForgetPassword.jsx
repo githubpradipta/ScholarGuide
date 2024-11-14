@@ -42,12 +42,12 @@ export default function ForgetPassword() {
 
   return (
     <div className='forgetPassword py-4 px-2 bg-slate-50 min-h-screen flex flex-col items-center'>
-      <div className="nav bg-transparent w-full flex justify-start mt-4 ml-4"><div className="" onClick={()=>{navigate(-1)}}><LeftArrow /></div></div>
-      <div className="bgImage w-[80%] mt-6">
-        <img src={Forget_Password_Img} alt="" srcset="" />
+      <div className="nav bg-transparent w-full flex justify-start mt-4 ml-4 cursor-pointer"><div className="" onClick={()=>{navigate(-1)}}><LeftArrow /></div></div>
+      <div className="bgImage w-[80%] md:w-[50%] lg:w-[20%] mt-6">
+        <img src={Forget_Password_Img} alt="" srcset="" className='w-full'/>
       </div>
 
-      <div className="content flex flex-col items-center mt-24">
+      <div className="content flex flex-col items-center mt-24 md:mt-6">
         <div className="heading text-center">
           <h1 className="text-2xl font-semibold text-yellow-500 mb-3">Forgot your password ?</h1>
           <p className="text-md font-normal text-slate-400 ">{Object.keys(getOTP).length != 0 ? getOTP.message : "Don't worry just enter your email for change pasword"}</p>

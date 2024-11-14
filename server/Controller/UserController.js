@@ -6,7 +6,7 @@ const secretKey = "nsdjeh83849"
 const bcrypt = require('bcrypt');
 const { uploadOnCloudinary } = require('../Utility/cloudinary.js')
 const { generateOTP } = require('../Utility/OTPGenerator')
-const { sendOtpEmail } = require('../Utility/mailer.js')
+const { sendOtpEmail, sendEmail } = require('../Utility/mailer.js')
 const { hashing } = require('../Utility/hashing.js');
 
 
@@ -274,6 +274,31 @@ const verifyOTP = async (req, res, next) => {
 
 
 }
+const feedback = async (req,res,next)=>{
+    const data = req.body;
+
+    try{
+        sendEmail(data,(err,info)=>{
+            if(err){
+                return next(new HttpError(500));
+            }
+            else{
+                return res.status(200).json({
+                    status:'success',
+                    message:{
+                        title:'Thank You',
+                        text:'We get your query and will resolve it very soon.'
+                    }
+                        
+                })
+            }
+        })
+    }
+    catch(err){
+        return next(new HttpError(500));
+    }
+
+}
 
 module.exports = {
     getUser,
@@ -289,4 +314,5 @@ module.exports = {
     DemoApi,
     forgetPassword,
     verifyOTP,
+    feedback,
 }

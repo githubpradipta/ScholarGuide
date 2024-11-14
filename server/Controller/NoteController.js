@@ -24,12 +24,16 @@ const reviewNotes = async(req,res,next)=>{
     const userId = req.params.id
     const newNote = req.body;
     const localFilePath = req.file.path;
+    console.log(newNote);
+    
+    
     
     
     try {
         
         const creadintial = await Drive_authorize();
         const drive = await Drive_uploadFile(creadintial,localFilePath,newNote.notename);
+        
         
         newNote.note_url = drive.webViewLink;
         newNote.noteDownload_url = drive.webContentLink;
@@ -44,6 +48,8 @@ const reviewNotes = async(req,res,next)=>{
             user:updatedUser,
         })  
     } catch (err) {
+        console.log(err);
+        
         return next(new HttpError(500,err))  
     }
 }

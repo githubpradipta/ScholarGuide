@@ -16,6 +16,10 @@ import MyUploads from './pages/MyUploads/MyUploads'
 import Review from './pages/Review/Review'
 import ForgetPassword from './pages/ForgetPassword/ForgetPassword'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
+import Help_Support from './pages/Help_Support/Help_Support'
+import FAQs from './pages/FAQs/FAQs'
+import Guidelines from './pages/Guidelines/Guidelines'
+import Manual from './pages/Manual/Manual'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -34,18 +38,22 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/notes' element={<Notes/>}/>
+      <Route path='/profile' element={<Profile/>}/>
+      <Route path='/support' element={<Help_Support/>}/>
+      <Route path='/support/faqs' element={<FAQs/>}/>
+      <Route path='/support/guidelines' element={<Guidelines/>}/>
+      <Route path='/support/manual' element={<Manual/>}/>
+      <Route path='/signin' element={<Login/>}/>
+      <Route path='/forget-password' element={<ForgetPassword/>}/>
+      <Route path='/signup' element={<Register/>}/>
       <Route path='/review/:status' element={<Review/>}/>
       <Route path='/profile/saves' element={<Saves/>}/>
-      <Route path='/forget-password' element={<ForgetPassword/>}/>
       <Route path='/profile/reset-password' element={<ResetPassword/>}/>
       <Route path='/upload' element={<Upload/>}/>
       <Route path='/profile/myuploads' element={<MyUploads/>}/>
-      <Route path='/profile' element={<Profile/>}/>
       <Route path='/profile/edit' element={<EditProfile/>}/>
       <Route path='/profile/edit/upload' element={<ImageUpload/>}/>
       <Route path='/notes/:categoryID' element={<InnerNote/>}/>
-      <Route path='/signin' element={<Login/>}/>
-      <Route path='/signup' element={<Register/>}/>
       <Route path='*' element={<Page404/>}/>
     </Routes>
     </>

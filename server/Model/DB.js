@@ -122,13 +122,33 @@ const UserSchema = mongoose.Schema({
     }
     
 })
+const BlogSchema = mongoose.Schema({
+    title:{
+        type:String,
+        required:true,
+    },
+    description:{
+        type:String,
+        required:true,
+    },
+    img_url:{
+        type:String,
+        required:true,
+    },
+    link_url:{
+        type:String,
+        required:true,
+    },
+})
 
 const NotesCategoryModel = mongoose.model('notesCategory',NotesCategorySchema);
 const NotesModel = mongoose.model('notes',NotesSchema);
 const UserModel = mongoose.model('users',UserSchema);
+const BlogModel = mongoose.model('blogs',BlogSchema);
 
 module.exports = {
      NotesModel,
      UserModel,
+     BlogModel,
      NotesCategoryModel,
     }

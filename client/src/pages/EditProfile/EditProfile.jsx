@@ -6,6 +6,7 @@ import { MutatingDots } from 'react-loader-spinner'
 import DefaultImg from "../../assets/Images/DefaultProfileImage.png"
 import './EditProfile.css'
 import ImageUploadWithoutForm from '../ImageUpload/ImageUpload'
+import Camera from '../../assets/Logo/Camera'
 
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null; // If not open, don't render anything
@@ -16,7 +17,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 <button onClick={onClose} className="absolute top-2 right-3 text-gray-500 hover:text-gray-800">
                     x
                 </button>
-                <ImageUploadWithoutForm onClose={onClose}/>
+                <ImageUploadWithoutForm onClose={onClose} />
             </div>
         </div>
     );
@@ -41,42 +42,42 @@ export default function EditProfile() {
         address: "",
         state: "",
         city: "",
-      });
-    
-      useEffect(() => {
+    });
+
+    useEffect(() => {
         const token = localStorage.getItem('auth');
         if (!token) {
-          navigate('/signin');
-          return;
+            navigate('/signin');
+            return;
         }
-    
+
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
-          setUser(user);
+            setUser(user);
         }
-      }, [navigate,isModalOpen]);
-    
-      useEffect(() => {
-        if (user) {
-          setEditData({
-            fullname: user.fullname || "",
-            gender: user.gender || "",
-            email: user.email || "",
-            username: user.username || "",
-            contact: user.contact || "",
-            year: user.year || "",
-            department: user.department || "",
-            university: user.university || "",
-            address: user.address || "",
-            state: user.state || "",
-            city: user.city || "",
-          });
-        }
-      }, [user]);
-    
-    
+    }, [navigate, isModalOpen]);
 
-    
+    useEffect(() => {
+        if (user) {
+            setEditData({
+                fullname: user.fullname || "",
+                gender: user.gender || "",
+                email: user.email || "",
+                username: user.username || "",
+                contact: user.contact || "",
+                year: user.year || "",
+                department: user.department || "",
+                university: user.university || "",
+                address: user.address || "",
+                state: user.state || "",
+                city: user.city || "",
+            });
+        }
+    }, [user]);
+
+
+
+
 
     const getData = (e) => {
         const { name, value } = e.target;
@@ -133,7 +134,7 @@ export default function EditProfile() {
 
 
     return (
-        <div className={`editprofilePage bg-[#292929] min-h-screen flex flex-col justify-center items-center px-4 py-4`}>
+        <div className={`editprofilePage bg-[#292929] min-h-screen flex flex-col justify-center items-center px-6 lg:px-16 py-4`}>
 
             {
                 loading ?
@@ -155,22 +156,27 @@ export default function EditProfile() {
                     <>
                         {/* header */}
                         <div className="header text-white px-2 my-4 mt-4 flex justify-between items-center w-full">
-                            <div className="backbtn flex items-center cursor-pointer lg:hidden" onClick={() => { navigate(-1) }}>
+                            <div className="backbtn flex items-center cursor-pointer" onClick={() => { navigate(-1) }}>
                                 <div className="backIcon" ><LeftArrow /></div>
-                                <div className="text-xl font-medium">Back</div>
+                                <div className="text-xl font-medium lg:hidden">Back</div>
                             </div>
 
-                            <div className="profileHeading flex-1 text-center text-2xl lg:text-3xl font-bold" onClick={()=>{setIsModalOpen(true)}}>Profile</div>
+                            <div className="profileHeading flex-1 text-center text-2xl lg:text-3xl font-bold" >Profile</div>
                             <div className="submitbtn text-xl font-semibold text-orange-400 cursor-pointer lg:hidden" onClick={submitData}>Confirm</div>
                         </div>
 
                         {/* ProfileTop */}
                         <div className="profileTop text-white flex flex-col items-center my-10">
-                            <div className="profilePic my-4 w-[120px] h-[120px] lg:w-[150px] lg:h-[150px] rounded-[50%]">
-                                <img className='w-full h-full object-cover rounded-[50%]' src={user.profile_url} alt="image" srcset="" />
+                            <div className="profilePic relative my-4 w-[120px] h-[120px] lg:w-[150px] lg:h-[150px] rounded-[50%]">
+                                <img className='w-full h-full object-cover overflow-hidden rounded-[50%]' src={user.profile_url} alt="image" srcset="" />
+                                <div className="overlay absolute w-full h-full top-0 lg:hidden flex flex-col justify-center items-center bg-gray-700 rounded-[50%] opacity-80 cursor-pointer" onClick={() => { setIsModalOpen(true) }}>
+                                    <Camera/>
+                                    <p className='text-xs font-semibold'>Edit Photo</p>
+                                </div>
                             </div>
                             <div className="name text-2xl font-bold ">{user.fullname}</div>
                             <div className="username text-xl font-medium text-[#a4a4a4] mt-1">@{user.username}</div>
+
                         </div>
 
                         <Modal isOpen={isModalOpen} onClose={() => { setIsModalOpen(false) }}>
@@ -236,7 +242,10 @@ export default function EditProfile() {
                             </div>
 
                             {/* Submit Button */}
-                            <button className='confirmBtn w-full bg-[#ffb300] py-4 mt-6 mb-4 rounded-md text-[#191919] font-semibold' onClick={submitData}>Confirm</button>
+                            <div className="btndiv w-full flex justify-center items-center">
+
+                                <button className='confirmBtn w-full lg:w-1/3  bg-[#ffb300] py-4 mt-6 mb-4 rounded-md text-[#191919] font-semibold' onClick={submitData}>Confirm</button>
+                            </div>
                         </div>
                     </>
             }

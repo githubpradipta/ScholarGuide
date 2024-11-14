@@ -6,7 +6,6 @@ import RightArrow2 from '../../assets/Logo/RightArrow2'
 import NotedetailsModal from '../../components/my_ui/NotedetailsModal/NotedetailsModal'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import PDFViewer from '../../components/PDFViewer/PDFViewer'
 
 
 

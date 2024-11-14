@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PDFViewer from '../../PDFViewer/PDFViewer';
 import { Link } from 'react-router-dom';
 import defaultImg from '../../../assets/Images/DefaultProfileImage.png'
 import LinkIcon from '../../../assets/Logo/LinkIcon';

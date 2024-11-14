@@ -19,19 +19,20 @@ import LocationIcon from '../../assets/Logo/LocationIcon'
 import CollegeIcon from '../../assets/Logo/CollegeIcon'
 import StarIcon from '../../assets/Logo/StarIcon'
 import img from "C:/Users/pradi/Desktop/Own/Profile Pics/Pradipta_Banerjee_Profile.png"
+import DeleteIcon from '../../assets/Logo/DeleteIcon'
 
 export default function Profile() {
-    const [user,setUser] = useState({});
+    const [user, setUser] = useState({});
     const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(() => {
         const token = localStorage.getItem('auth');
-        if(!token) return navigate('/signin')
+        if (!token) return navigate('/signin')
 
         const user = localStorage.getItem('user');
         setUser(JSON.parse(user));
-      },[])    
-    
+    }, [])
+
 
     const logOut = () => {
         Swal.fire({
@@ -57,7 +58,7 @@ export default function Profile() {
     return (
         <div className='profileDiv h-screen '>
             <div className="header flex justify-between items-center py-4 pt-8 lg:hidden">
-                <div className="backIcon ml-4" onClick={()=>{navigate(-1)}}><LeftArrow /></div>
+                <div className="backIcon ml-4" onClick={() => { navigate(-1) }}><LeftArrow /></div>
                 <div className="profileHeading mr-8 lg:mr-0 flex-1 text-center text-2xl lg:text-3xl font-bold">My Profile</div>
             </div>
             <div className="profilebody flex flex-col lg:flex-row lg:py-8 lg:h-full">
@@ -81,40 +82,45 @@ export default function Profile() {
 
                         </div>
 
-                        <div className="editProfileIcon ml-2 lg:hidden" onClick={()=>{navigate('/profile/edit')}}><EditIcon className='' /></div>
+                        <div className="editProfileIcon ml-2 lg:hidden" onClick={() => { navigate('/profile/edit') }}><EditIcon className='' /></div>
 
-                        <div className="container-eg-btn-2" onClick={()=>{navigate('/profile/edit')}}>
-                            <Link className="editProfileBtn button button-5 rounded-md text-xs font-light" >Edit Profile</Link>
+                        <div className="editAndBackBtn">
+                            <div className="container-eg-btn-2" onClick={() => { navigate('/profile/edit') }}>
+                                <Link className="editProfileBtn button button-5 rounded-md text-xs font-light" >Edit Profile</Link>
+                            </div>
+
+                           
+
                         </div>
 
-                        <div className="socialLinks hidden lg:flex justify-center item-center gap-8 my-3">
+                        <div className="socialLinks hidden lg:hidden justify-center item-center gap-8 my-3">
                             <div className='social-icons w-5 h-5 cursor-pointer hover:scale-125 transition-all ease'><LinkedinIcon color={`#a4a4a4`} /></div>
                             <div className='social-icons w-5 h-5 cursor-pointer hover:scale-125 transition-all ease'><GithubIcon color={`#a4a4a4`} /></div>
                             <div className='social-icons w-5 h-5 cursor-pointer hover:scale-125 transition-all ease'><FacebookIcon color={`#a4a4a4`} /></div>
                         </div>
-                    </div> 
+                    </div>
 
                     <hr className=' mx-4 hidden lg:block' />
 
                     <div className="otherInfo px-6 my-8 hidden lg:block ">
-                        <div className={`mainInfo flex flex-col gap-4 text-[#a4a4a4] ${user.email? '':'hidden'}`}>
+                        <div className={`mainInfo flex flex-col gap-4 text-[#a4a4a4] ${user.email ? '' : 'hidden'}`}>
                             <div className="email flex justify-start items-center">
-                                <div className="icon text-md font-bold w-6 h-6"><GmailIcon color='#a4a4a4'/></div>
+                                <div className="icon text-md font-bold w-6 h-6"><GmailIcon color='#a4a4a4' /></div>
                                 <div className="value text-sm ml-3 flex-1">{user.email}</div>
                             </div>
 
-                            <div className={`address flex justify-start items-center ${user.address?"":"hidden"}`}>
-                                <div className="icon text-md font-bold w-6 h-6"><LocationIcon color='#a4a4a4'/></div>
+                            <div className={`address flex justify-start items-center ${user.address ? "" : "hidden"}`}>
+                                <div className="icon text-md font-bold w-6 h-6"><LocationIcon color='#a4a4a4' /></div>
                                 <div className="value text-sm ml-3 flex-1">{user.address}</div>
                             </div>
 
                             <div className="college flex justify-start items-start items-center">
-                                <div className="name text-md font-bold w-6 h-6"><CollegeIcon color='#a4a4a4'/></div>
+                                <div className="name text-md font-bold w-6 h-6"><CollegeIcon color='#a4a4a4' /></div>
                                 <div className="value text-sm ml-3 flex-1">4th</div>
                             </div>
 
                             <div className="dept flex justify-start items-center">
-                                <div className="icon text-md font-bold w-6 h-6"><StarIcon color='#a4a4a4'/></div>
+                                <div className="icon text-md font-bold w-6 h-6"><StarIcon color='#a4a4a4' /></div>
                                 <div className="value text-sm ml-3 flex-1">{user.department}</div>
                             </div>
 
@@ -154,7 +160,7 @@ export default function Profile() {
                                     <div className="icon"><RightArrow2 /></div>
                                 </div>
                             </li>
-                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={()=>{navigate('/forget-password')}}>
+                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full py-4 justify-between items-center lg:px-4 lg:py-8 lg:rounded-2xl cursor-pointer" onClick={() => { navigate('/forget-password') }}>
                                 <div className="left flex justify-center items-center gap-2">
                                     <div className="icon"><LockIcon /></div>
                                     <div className="text font-semibold text-[18px] text-[#191919]">Change Password</div>
@@ -173,7 +179,7 @@ export default function Profile() {
                     <div className="help_logout flex flex-col justify-start items-center px-6">
 
                         <ul className="dashboardList w-full flex flex-col lg:items-start">
-                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full px-2 lg:rounded-md py-3 lg:w-1/2 justify-between items-center cursor-pointer">
+                            <li className="dashboardItem lg:transition-all lg:ease-in flex w-full px-2 lg:rounded-md py-3 lg:w-1/2 justify-between items-center cursor-pointer" onClick={() => { navigate('/support') }}>
                                 <div className="left flex justify-center items-center gap-2">
                                     <div className="icon"><HelpandSupportIcon /></div>
                                     <div className="text font-semibold text-[18px] text-[#191919]">Help & Support</div>
@@ -182,12 +188,18 @@ export default function Profile() {
                                     <div className="icon"><RightArrow2 /></div>
                                 </div>
                             </li>
-                            <li className="logout dashboardItem lg:transition-all lg:ease-in flex w-full lg:w-1/2 px-2 lg:rounded-md py-3 justify-between items-center cursor-pointer" onClick={() => { logOut() }}>
+                            <li className="logout red-btn dashboardItem lg:transition-all lg:ease-in flex w-full lg:w-1/2 px-2 lg:rounded-md py-3 justify-between items-center cursor-pointer" onClick={() => { logOut() }}>
                                 <div className="left flex justify-center gap-2">
                                     <div className="icon"><LogoutIcon className='text-red-500' /></div>
                                     <div className="text font-bold text-[18px] text-red-500">Log Out</div>
                                 </div>
-
+                            </li>
+                            <li className="deleteUser red-btn dashboardItem lg:transition-all lg:ease-in flex w-full lg:w-1/2 px-2 lg:rounded-md py-3 justify-between items-center cursor-pointer" onClick={() => { console.log('Account Delete btn pressed');
+                             }}>
+                                <div className="left flex justify-center gap-2">
+                                    <div className="icon"><DeleteIcon className='text-red-500'/></div>
+                                    <div className="text font-bold text-[18px] text-red-500">Delete Account</div>
+                                </div>
                             </li>
 
                         </ul>

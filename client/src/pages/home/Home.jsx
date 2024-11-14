@@ -18,6 +18,7 @@ import RightArrow from '../../assets/Logo/RightArrow';
 
 export default function Home() {
   const navigate = useNavigate();
+  const [blogs,setBlogs] = useState([]);
   let typesOfNotes = [
     {
       name: "Computer Fundamentals"
@@ -39,7 +40,7 @@ export default function Home() {
   if (screenWidth >= 1024) blogCard = 3;
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: blogCard,
     slidesToScroll: 1,
@@ -50,6 +51,15 @@ export default function Home() {
   useEffect(() => {
     window.addEventListener('resize', () => {
       setScreenWidth(window.innerWidth);
+    })
+
+    axios.get('http://localhost:8000/blog/blogs')
+    .then((res)=>{
+      setBlogs(res.data.blogs);
+    })
+    .catch((err)=>{
+      console.log(err);
+      
     })
 
   }, [screenWidth])
@@ -64,7 +74,7 @@ export default function Home() {
           <div className="head_box">
             <p className='text-5xl'>Grow by Sharing</p>
             <span className='text-7xl font-extrabold'>Notes</span>
-            <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block bg-[#ffc53c92] text-[#ffc53c] mx-2 px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
+            <h1 className='mt-6 text-xl font-bold leading-6'><p className='text-white inline-block'>ScholarGuide</p> helps you with clear handy <p className='text-white inline-block'>Notes</p> for <div className="highlight inline-block text-yellow-900 bg-[#ffc53c] mx-2 px-2 py-0.5 rounded-sm">Highlight</div> your <p className='text-white inline-block'>Progress.</p></h1>
             <div className="headBtn mt-7">
               <button class="mt-14 py-1 flex justify-center items-center text-sm text-white hover:text-white lg:py-1.5 px-6 bg-[#292929] rounded-3xl border border-white hover:border-[#ffb300] transition-all duration-500 ease glowing-btn" onClick={() => { navigate('/notes')}}>
                 Try it now 🎉
@@ -86,7 +96,7 @@ export default function Home() {
           </div>
 
           <div className="text-white py-4 px-4 lg:mx-20 mx-4 mt-12 lg:h-auto">
-            <div className="AboutTitle lg:inline-block text-2xl font-bold text-[#ffb300] bg-[#191919]  px-3 py-1.5 rounded-[8px]">About It</div>
+            <div className="AboutTitle lg:inline-block text-2xl font-bold text-[#FA8635] bg-[#191919]  px-3 py-1.5 rounded-[8px]">About It</div>
             <div className='Abouttext text-white lg:mt-3'>
               <div className='flex flex-col gap-3 md:gap-4 md:flex-row md:items-start'>
                 <div className='definitionBox py-4 px-4 flex-1 text-center my-3 lg:m-0'>Welcome to <span className='font-bold text-[#191919]'>ScholarGuide</span>🎓✨ This is your go-to platform for sharing and discovering valuable student notes. On ScholarGuide, you can easily upload your own notes and access a diverse collection of notes shared by others. 📚🔍</div>
@@ -103,7 +113,7 @@ export default function Home() {
 
             <div className="aboutLeft flex-1">
               {/* heading */}
-              <div className="heading text-2xl font-bold text-[#ffcb00]">Benifits</div>
+              <div className="heading text-2xl font-bold text-[#FA8635]">Benifits</div>
 
 
               <div className="subAbout flex flex-col justify-center items-start text-start mt-6">
@@ -144,15 +154,15 @@ export default function Home() {
 
         <div className="blog text-center mt-20 grayBG py-6">
           <div className="textbox mx-4">
-            <h1 className='font-bold text-4xl'>Latest <span className='text-[#ffcb00]'>Tech Blogs</span> for You</h1>
+            <h1 className='font-bold text-4xl'>Latest <span className='text-[#FA8635]'>Tech Blogs</span> for You</h1>
             <p className='text-md font-normal leading-6 mt-4 px-1 lg:px-14'>Stay ahead with the latest <span className='font-bold text-white'>Insights</span> and trends in <span className='font-bold text-white'>Tech</span>.</p>
           </div>
           <div className="slider-container mt-10 py-6">
             <Slider {...settings}>
               {
-                typesOfNotes.map((type) => {
+                blogs.map((blog) => {
                   return (
-                    <Card title={type.name} desc={" This is description "} />
+                    <Card blog={blog} />
                   )
                 })
               }
@@ -164,7 +174,7 @@ export default function Home() {
         <footer className='mx-4 mt-20'>
           <div className="contact  px-2 py-4 text-center">
             <div className="textbox mb-10">
-              <h1 className='font-bold text-4xl'>Raise Your <span className='text-[#ffcb00]'>Query</span></h1>
+              <h1 className='font-bold text-4xl'>Raise Your <span className='text-[#FA8635]'>Query</span></h1>
               <p className='text-md font-normal leading-6 mt-2 px-1 lg:px-14'>Don't hasitate, your <span className='font-bold text-white'>Feedback</span>  makes us <span className='font-bold text-white'>Perfect</span></p>
             </div>
             <ContactForm className={'contactForm'} />

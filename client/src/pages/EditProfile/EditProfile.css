@@ -26,6 +26,9 @@
     border: 2px solid transparent;
     cursor: pointer;
   }
+  .profilePic:hover>.overlay{
+      display: flex;
+  }
   
   .custom-dropdown .dropdown-menu {
     background-color: #3d3d3d;

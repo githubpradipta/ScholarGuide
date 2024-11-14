@@ -10,12 +10,12 @@
     transition: all .1s ease-out;
 }
 .cardbtn:hover{
-    background-color: rgba(164, 164, 164, 0.674);
+    background-color: rgba(105, 105, 105, 0.674);
 }
 .cardbtn svg{
     width: 1rem;
     height: 1rem;
 }
 .cardtext{
-    background-color: rgba(0, 0, 0, 0.315);
+    background: linear-gradient(to top, black, rgba(0, 0, 0, 0.324));
 }

@@ -17,6 +17,7 @@ export default function Upload() {
         author: "",
         category: "",
         description: "",
+        file:"",
     })
 
     useEffect(() => {
@@ -87,14 +88,18 @@ export default function Upload() {
             form.append('category', formData.category);
             form.append('description', formData.description);
             form.append('file', file);
+            
 
             setUploadStatus(true);
-
-            axios.post(`http://localhost:8000/admin/notes/review/${user._id}`, form, {
+            
+            
+            axios.post(`http://localhost:8000/admin/notes/review/${user._id}`, form, 
+            {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            })
+            }
+            )
                 .then((res) => {
                     console.log(res.data);
                     setIsModalOpen(false);

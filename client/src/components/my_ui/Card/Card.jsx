@@ -1,17 +1,19 @@
 import React from 'react'
 import './Card.css'
 import ArrowUpRight from '../../../assets/Logo/ArrowUpRight'
+import { Link } from 'react-router-dom'
 
-export default function Card({title,desc,link}) {
+export default function Card({blog}) {
     return (
-        <div className="card mx-6 rounded-md overflow-hidden relative shadow-inner">
+        <div className="card mx-6 rounded-xl h-[230px] overflow-hidden relative shadow-inner">
             
-             <img src="https://img.freepik.com/free-photo/person-playing-3d-video-games-device_23-2151005751.jpg?size=626&ext=jpg" alt="" srcset="" />
+             <img src={blog.img_url} alt="" srcset="" className='h-full w-full object-cover' />
         
             <div className="cardtext px-6 py-4 absolute top-0 h-full w-full flex flex-col justify-end items-start">
-                <h1 className='text-md font-extrabold'>{title}</h1>
-                <text className='font-normal text-sm text-white text-left mr-20 mb-3'>{desc.substring(1,50)}...</text>
-                <button className='cardbtn text-white' >Click Here <ArrowUpRight/> </button>
+                <h1 className='text-md font-extrabold'>{blog.title}</h1>
+                <text className='font-normal text-[10px] text-white text-left mr-20 mb-3'>{blog.description.substring(0,80)}...</text>
+                <Link className='cardbtn text-white' to={blog.link_url} target='_blank' >Read More <ArrowUpRight/> </Link>
+                
             </div>
         </div>
     )

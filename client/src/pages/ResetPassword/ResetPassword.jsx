@@ -90,11 +90,11 @@ export default function ResetPassword() {
                 </div>
             </div>
 
-            <div className="bgImage w-[80%] mt-6">
+            <div className="bgImage w-[80%] md:w-[50%] lg:w-[20%] mt-6">
                 <img src={Reset_Password_Img} alt="" />
             </div>
 
-            <div className="content flex flex-col items-center mt-24">
+            <div className="content flex flex-col items-center mt-24 md:mt-6">
                 <div className="heading text-center">
                     <h1 className="text-2xl font-semibold text-yellow-500 mb-1">Reset your password</h1>
                     <p className="text-md font-normal text-slate-400">
